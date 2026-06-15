@@ -10,7 +10,8 @@
 body{
     background-image: url(wall1.jpg);
     background-size:cover;
-    background-position:center;
+    background-position: center;
+    
    
 }
 
@@ -82,7 +83,7 @@ header p{
     overflow-x: auto;
     align-items: center;
     
-    
+    margin-top: 200px;
     
 }
 
