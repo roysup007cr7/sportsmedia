@@ -8,7 +8,7 @@
     
 }
 body{
-    background-image: url(wall2.jpg);
+    background-image: url(wall1.jpg);
     background-size:cover;
     background-position:center;
    
@@ -80,11 +80,12 @@ header p{
     gap: 20px;
     align-items: center;
     overflow-x: auto;
+    align-items: center;
+    
+    
     
 }
-.main::-webkit-scrollbar{
-    display:none;
-}
+
 .main h1{
     color: #fff;
 }
