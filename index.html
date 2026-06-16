@@ -258,7 +258,7 @@
             const matchStartTime = new Date(startTimeString);
             
             // Assume a standard football match runs for roughly 2 hours (120 minutes)
-            const matchEndTime = new Date(matchStartTime.getTime() + (3 * 60 * 60 * 1000));
+            const matchEndTime = new Date(matchStartTime.getTime() + (2 * 60 * 60 * 1000));
             
             const badge = card.querySelector('.status-badge');
             if (!badge) return;
