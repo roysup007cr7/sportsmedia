@@ -61,7 +61,6 @@
         <p>Leading sports streaming website </p>
     </header>
     <h3 class="match_title">MATCHES</h3>
-    <h3 class="match_title">MATCHES</h3>
 
     <!-- Global Refresh Streams Button -->
     <div style="text-align: center; margin-bottom: 10px;">
@@ -72,7 +71,7 @@
         
         <!-- MATCH 1: ARGENTINA VS ALGERIA -->
         <!-- Note: set data-start using the standard format: YYYY-MM-DDTHH:MM:SS+TimeZone -->
-        <div class="main_container" data-start="2026-06-16T19:12:00+05:30">
+        <div class="main_container" data-start="2026-06-17T06:30:00+05:30">
             <div class="match-meta">
                 <span class="league-tag">🏆 FIFA World Cup</span>
                 <!-- Leave this badge blank! JavaScript will fill it instantly -->
@@ -232,7 +231,7 @@
             const matchStartTime = new Date(startTimeString);
             
             // Assume a standard football match runs for roughly 2 hours (120 minutes)
-            const matchEndTime = new Date(matchStartTime.getTime() + (2 * 60 * 60 * 1000));
+            const matchEndTime = new Date(matchStartTime.getTime() + (3 * 60 * 60 * 1000));
             
             const badge = card.querySelector('.status-badge');
             if (!badge) return;
