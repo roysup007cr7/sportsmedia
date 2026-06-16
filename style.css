@@ -211,3 +211,42 @@ header p {
         border-radius: 12px;
     }
 }
+
+/* --- Professional Site Footer --- */
+.site-footer {
+    width: 100%;
+    background: rgba(0, 0, 0, 0.7); /* Deep overlay background to ground the layout */
+    border-top: 1px solid rgba(255, 255, 255, 0.15);
+    padding: 25px 15px;
+    text-align: center;
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 14px;
+    margin-top: 50px;
+}
+
+.site-footer p {
+    margin-bottom: 10px;
+}
+
+.footer-links {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+}
+
+.footer-links a {
+    color: #1a73e8; /* Matches the vibrant blue branding */
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.2s ease;
+}
+
+.footer-links a:hover {
+    color: #1557b0;
+    text-decoration: underline;
+}
+
+.footer-links span {
+    color: rgba(255, 255, 255, 0.3);
+}
