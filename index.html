@@ -70,11 +70,13 @@
 
     <div class="main">
         
-        <!-- MATCH 1: ARGENTINA VS ALGERIA (LIVE MATCH EXAMPLE) -->
-        <div class="main_container">
+        <!-- MATCH 1: ARGENTINA VS ALGERIA -->
+        <!-- Note: set data-start using the standard format: YYYY-MM-DDTHH:MM:SS+TimeZone -->
+        <div class="main_container" data-start="2026-06-16T06:30:00+05:30">
             <div class="match-meta">
                 <span class="league-tag">🏆 FIFA World Cup</span>
-                <span class="status-badge live-blink">● LIVE</span>
+                <!-- Leave this badge blank! JavaScript will fill it instantly -->
+                <span class="status-badge"></span>
             </div>
             
             <div class="teams-display">
@@ -97,11 +99,11 @@
             </div>
         </div>
 
-        <!-- MATCH 2: FRANCE VS SENEGAL (UPCOMING MATCH EXAMPLE) -->
-        <div class="main_container">
+        <!-- MATCH 2: FRANCE VS SENEGAL -->
+        <div class="main_container" data-start="2026-06-16T12:30:00+05:30">
             <div class="match-meta">
                 <span class="league-tag">🏆 FIFA World Cup</span>
-                <span class="status-badge upcoming-badge">🕒 UPCOMING</span>
+                <span class="status-badge"></span>
             </div>
             
             <div class="teams-display">
@@ -125,10 +127,10 @@
         </div>
 
         <!-- MATCH 3: AUSTRIA VS JORDAN -->
-        <div class="main_container">
+        <div class="main_container" data-start="2026-06-16T09:30:00+05:30">
             <div class="match-meta">
                 <span class="league-tag">🏆 FIFA World Cup</span>
-                <span class="status-badge upcoming-badge">🕒 UPCOMING</span>
+                <span class="status-badge"></span>
             </div>
             
             <div class="teams-display">
@@ -152,10 +154,10 @@
         </div>
 
         <!-- MATCH 4: IRAQ VS NORWAY -->
-        <div class="main_container">
+        <div class="main_container" data-start="2026-06-16T03:30:00+05:30">
             <div class="match-meta">
                 <span class="league-tag">🏆 FIFA World Cup</span>
-                <span class="status-badge upcoming-badge">🕒 UPCOMING</span>
+                <span class="status-badge"></span>
             </div>
             
             <div class="teams-display">
@@ -217,6 +219,51 @@
             <a href="privacy.html">Privacy Policy</a>
         </div>
     </footer>
-    
+  <!-- AUTOMATIC MATCH STATUS ENGINE -->
+    <script>
+    function updateMatchSignals() {
+        const now = new Date();
+        
+        // Find every match container that has a start time attached
+        const matches = document.querySelectorAll('.main_container[data-start]');
+        
+        matches.forEach(card => {
+            const startTimeString = card.getAttribute('data-start');
+            const matchStartTime = new Date(startTimeString);
+            
+            // Assume a standard football match runs for roughly 2 hours (120 minutes)
+            const matchEndTime = new Date(matchStartTime.getTime() + (2 * 60 * 60 * 1000));
+            
+            const badge = card.querySelector('.status-badge');
+            if (!badge) return;
+            
+            if (now < matchStartTime) {
+                // Case 1: Match hasn't started yet
+                badge.className = "status-badge upcoming-badge";
+                badge.innerHTML = "🕒 UPCOMING";
+                card.style.opacity = "1"; 
+            } 
+            else if (now >= matchStartTime && now <= matchEndTime) {
+                // Case 2: Match is currently active inside the 2-hour window
+                badge.className = "status-badge live-blink";
+                badge.innerHTML = "● LIVE";
+                card.style.opacity = "1";
+            } 
+            else {
+                // Case 3: Match is completely over
+                badge.className = "status-badge finished-badge";
+                badge.innerHTML = "🏁 FINISHED";
+                card.style.opacity = "0.6"; // Lightly dim out finished matches
+            }
+        });
+    }
+
+    // Run the check instantly when the page loads
+    document.addEventListener("DOMContentLoaded", () => {
+        updateMatchSignals();
+        // Automatically check and update signals every 20 seconds without reloading the page
+        setInterval(updateMatchSignals, 20000);
+    });
+    </script>
 </body>
 </html>

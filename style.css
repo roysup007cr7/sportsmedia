@@ -360,3 +360,10 @@ header p {
     50% { opacity: 0.4; }
     100% { opacity: 1; }
 }
+
+/* Styling for matches that have concluded */
+.finished-badge {
+    background: rgba(255, 255, 255, 0.08);
+    color: rgba(255, 255, 255, 0.4);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+}
