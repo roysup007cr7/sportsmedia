@@ -10,7 +10,7 @@
 }
 
 body {
-    background-image: url(wall1.jpg);
+    background-image: url(wall2.jpg);
     background-size: cover;
     background-position: center;
     background-attachment: fixed; /* Keeps background smooth while scrolling */
