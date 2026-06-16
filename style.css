@@ -1,144 +1,213 @@
 @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap');
-*{
+
+/* --- Base Reset & Typography --- */
+* {
     padding: 0;
     margin: 0;
     box-sizing: border-box;
     font-family: Outfit;
-    overflow: hidden;
-    
+    /* REMOVED: overflow: hidden; (This was freezing the scroll wheel) */
 }
-body{
+
+body {
     background-image: url(wall1.jpg);
-    background-size:cover;
-    background-position:center;
-   min-width:1200px;
-      margin:0 auto;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed; /* Keeps background smooth while scrolling */
+    min-height: 100vh;
+    width: 100%;
+    margin: 0 auto;
+    /* REMOVED: min-width: 1200px; (This was stretching desktop views on mobile) */
 }
 
-header{
+/* --- Layout Structure --- */
+header {
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-bottom: 50px;
-}
-header h1{
-    font-size: 70px;
-    color: #fff;
-}
-header p{
-    font-size: 30px;
-    color: #fff;
-}
-.main_container{
-    user-select: none;
-    background: rgba(255, 255, 255, 0.2); /* transparent */
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    display: flex;
-    width: 400px;
-    flex-direction: column;
-    align-items: center;
-    margin-top: 20px;
-    border-radius: 15px;
-    transition: all;
-    transition-duration: 1s;
-    padding-bottom: 10px;
-    flex-shrink: 0;
-    min-width: 400px;
-}
-.timings{
-    font-size: 20px;
+    margin-bottom: 30px;
+    padding: 20px 10px 0 10px;
 }
 
-.main_container:hover{
-    scale: 1.05;
+header h1 {
+    font-size: 50px; /* Adjusted slightly for standard screens */
+    color: #fff;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.5);
 }
-.main_container p{
-    text-align: center;
+
+header p {
+    font-size: 24px;
+    color: #fff;
 }
-.main_container h2{
-    text-align: center;
-}
-.links {
+
+/* --- Main Container Wrapper --- */
+.main {
     display: flex;
-    gap: 5px;
-}
-.links button{
-    margin-top: 5px;
-    width: 140px;
-    font-size: 16px;
-    border-radius: 15px;
-}
-.links button:hover{
-    box-shadow: 5px 5px 5px gray;
-}
-.links a{
-    text-decoration: none;
-}
-.main{
-    scrollbar-width:none;
-    display: flex;
+    flex-direction: column;
+    align-items: center;
     gap: 20px;
     width: 500px;
-    height: 600px;
-    padding-bottom: 12px;
-    margin: auto;
-    align-items: center;
-    flex-direction: column;
+    max-width: 95%; /* Ensures it scales perfectly on mid-size screens */
+    min-height: 600px;
+    padding: 20px 12px;
+    margin: 0 auto 40px auto;
     border-radius: 22px;
     border: 2px solid rgb(255, 255, 255);
-    overflow-y: auto;
-    
+    background: rgba(0, 0, 0, 0.4); /* Darkened slightly for better text contrast */
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
 }
-.main::-webkit-scrollbar{
-    display:none;
-}
-.main h1{
+
+.main h1 {
     color: #fff;
 }
-.match_title{
+
+.match_title {
     color: white;
-    font-size: 44px;
+    font-size: 36px;
     text-align: center;
 }
 
-/*@media (max-width:600px){
-    .main{
-        width: 95%;
-        height: 100vh;
+/* --- Match Card & Elements --- */
+.main_container {
+    user-select: none;
+    background: rgba(255, 255, 255, 0.15); 
+    display: flex;
+    width: 100%; /* Spans full width of the parent .main container */
+    max-width: 420px;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 15px;
+    transition: transform 0.3s ease;
+    padding: 15px;
+    color: #fff;
+}
 
-        border-radius: 12px;
+.main_container:hover {
+    transform: scale(1.02);
+}
 
-        padding: 10px;
-    }
-    .main h1{
-        font-size: 20px;
-    }
-    @media (max-width:600px){
+.main_container p, 
+.main_container h2 {
+    text-align: center;
+    margin-bottom: 8px;
+}
 
-    .main_container{
-        width: 95%;
-        min-width: 95%;
+.timings {
+    font-size: 18px;
+    font-weight: 300;
+}
 
-        border-radius: 12px;
+/* --- Original Button Layout Setup --- */
+.links {
+    display: flex;
+    gap: 10px;
+    margin-top: 10px;
+}
 
-        padding: 10px;
-    }
+.links button {
+    cursor: pointer;
+    width: 130px;
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 15px;
+    border: none;
+    background: #fff;
+    font-weight: bold;
+    transition: background 0.2s, box-shadow 0.2s;
+}
 
-    header h1{
-        font-size: 38px;
+.links button:hover {
+    box-shadow: 0 4px 10px rgba(255,255,255,0.3);
+    background: #e0e0e0;
+}
+
+.links a {
+    text-decoration: none;
+}
+
+/* ==========================================================================
+   NEW: Adsterra Layout & Prominent Destination Button Styles
+   ========================================================================== */
+
+/* Centers ad blocks beautifully on phone screens and stops horizontal page breaks */
+.ad-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 15px auto;
+    width: 100%;
+    overflow: hidden;
+}
+
+/* Clear content-area wrapping your stream links */
+.content-area {
+    text-align: center;
+    width: 100%;
+    padding: 10px 0;
+}
+
+/* Eye-catching, premium mobile-optimized main button layout */
+.match-btn {
+    display: block;
+    width: 90%;
+    max-width: 350px;
+    margin: 15px auto;
+    padding: 16px;
+    background-color: #1a73e8; /* Bright Blue to look professional, distinct from spam ads */
+    color: white !important;
+    text-align: center;
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: bold;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(26, 115, 232, 0.4);
+    transition: background-color 0.2s, transform 0.1s;
+}
+
+.match-btn:hover {
+    background-color: #1557b0;
+    transform: translateY(-1px);
+}
+
+.match-btn:active {
+    transform: translateY(1px);
+}
+
+
+/* ==========================================================================
+   Mobile Responsive Adjustments (Max Width: 600px)
+   ========================================================================== */
+@media (max-width: 600px) {
+    header h1 {
+        font-size: 36px;
         text-align: center;
     }
 
-    header p{
+    header p {
         font-size: 18px;
         text-align: center;
     }
 
-    .match_title{
-        font-size: 24px;
-        padding: 0 10px;
+    .main {
+        width: 92%;
+        min-height: auto;
+        border-radius: 16px;
+        padding: 15px 10px;
     }
 
+    .main h1 {
+        font-size: 22px;
+    }
+
+    .match_title {
+        font-size: 24px;
+        padding: 0 5px;
+    }
+
+    .main_container {
+        width: 100%;
+        padding: 12px;
+        border-radius: 12px;
+    }
 }
-}*/
