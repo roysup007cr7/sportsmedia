@@ -179,9 +179,9 @@ header p {
    Mobile Responsive Adjustments (Max Width: 600px)
    ========================================================================== */
 @media (max-width: 600px) {
-    header h1 {
-        font-size: 36px;
-        text-align: center;
+    header .logo {
+        width: 200px;
+        height: 50px;
     }
 
     header p {
@@ -430,4 +430,8 @@ header p {
 
 .social-btn:active {
     transform: translateY(1px);
+}
+.logo{
+    width: 600px;
+    height: 200px;
 }
