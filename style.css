@@ -6,7 +6,6 @@
     margin: 0;
     box-sizing: border-box;
     font-family: Outfit;
-    /* REMOVED: overflow: hidden; (This was freezing the scroll wheel) */
 }
 
 body {
@@ -17,7 +16,6 @@ body {
     min-height: 100vh;
     width: 100%;
     margin: 0 auto;
-    /* REMOVED: min-width: 1200px; (This was stretching desktop views on mobile) */
 }
 
 /* --- Layout Structure --- */
@@ -30,7 +28,7 @@ header {
 }
 
 header h1 {
-    font-size: 50px; /* Adjusted slightly for standard screens */
+    font-size: 50px;
     color: #fff;
     text-shadow: 0 2px 4px rgba(0,0,0,0.5);
 }
@@ -40,8 +38,7 @@ header p {
     color: #fff;
 }
 
-/* --- Main Container Wrapper --- */
-/* --- Main Container Wrapper --- */
+/* --- Main Container Wrapper (FIXED: Completely flat to stop double layering) --- */
 .main {
     display: flex;
     flex-direction: column;
@@ -53,11 +50,12 @@ header p {
     padding: 20px 12px;
     margin: 0 auto 40px auto;
     
-    /* REMOVED backgrounds and filters here to solve the double-layering bug */
+    /* Forces this outer wrapper to be completely invisible so no double layers show */
     background: transparent !important; 
     backdrop-filter: none !important;
     -webkit-backdrop-filter: none !important;
     border: none !important;
+    box-shadow: none !important;
 }
 
 .main h1 {
@@ -70,26 +68,24 @@ header p {
     text-align: center;
 }
 
-/* --- Match Card & Elements --- */
+/* --- Match Card & Elements (FIXED: Darkened background for extreme text readability) --- */
 .main_container {
     user-select: none;
-    /* CHANGED: Switched to a dark, solid 80% opacity overlay to isolate the wallpaper */
-    background: rgba(10, 10, 12, 0.85) !important; 
-    backdrop-filter: blur(12px) !important; 
-    -webkit-backdrop-filter: blur(12px) !important;
+    background: rgba(15, 15, 18, 0.92) !important; /* Deep dark solid coat to block background bleed */
+    backdrop-filter: blur(14px) !important; 
+    -webkit-backdrop-filter: blur(14px) !important;
     display: flex;
     width: 100%;
     max-width: 420px;
     flex-direction: column;
     align-items: center;
     border-radius: 15px;
-    /* CHANGED: Made the border brighter so users can see the distinct outlines of cards */
-    border: 1px solid rgba(255, 255, 255, 0.2) !important; 
+    border: 1px solid rgba(255, 255, 255, 0.25) !important; /* Clear, sharp outer crisp boundary line */
     transition: transform 0.3s ease;
     padding: 18px;
     color: #ffffff !important;
     margin-bottom: 25px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5) !important; /* Casts a strong shadow behind the card */
+    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.7) !important;
 }
 
 .main_container:hover {
@@ -135,11 +131,7 @@ header p {
     text-decoration: none;
 }
 
-/* ==========================================================================
-   NEW: Adsterra Layout & Prominent Destination Button Styles
-   ========================================================================== */
-
-/* Centers ad blocks beautifully on phone screens and stops horizontal page breaks */
+/* --- Adsterra Layout & Prominent Destination Button Styles --- */
 .ad-container {
     display: flex;
     justify-content: center;
@@ -149,21 +141,19 @@ header p {
     overflow: hidden;
 }
 
-/* Clear content-area wrapping your stream links */
 .content-area {
     text-align: center;
     width: 100%;
     padding: 10px 0;
 }
 
-/* Eye-catching, premium mobile-optimized main button layout */
 .match-btn {
     display: block;
     width: 90%;
     max-width: 350px;
     margin: 15px auto;
     padding: 16px;
-    background-color: #1a73e8; /* Bright Blue to look professional, distinct from spam ads */
+    background-color: #1a73e8; /* Bright Blue to look professional */
     color: white !important;
     text-align: center;
     text-decoration: none;
@@ -183,10 +173,7 @@ header p {
     transform: translateY(1px);
 }
 
-
-/* ==========================================================================
-   Mobile Responsive Adjustments (Max Width: 600px)
-   ========================================================================== */
+/* --- Mobile Responsive Adjustments (Max Width: 600px) --- */
 @media (max-width: 600px) {
     header .logo {
         width: 300px;
@@ -203,6 +190,11 @@ header p {
         min-height: auto;
         border-radius: 16px;
         padding: 15px 10px;
+        /* FIXED: Ensures mobile wrapper never overrides transparency or adds double lines */
+        background: transparent !important;
+        border: none !important;
+        box-shadow: none !important;
+        backdrop-filter: none !important;
     }
 
     .main h1 {
@@ -221,20 +213,22 @@ header p {
     }
 }
 
-/* --- Professional Site Footer --- */
+/* --- Professional Site Footer (FIXED: Max Contrast for Disclaimer text) --- */
 .site-footer {
     width: 100%;
-    background: rgba(0, 0, 0, 0.7); /* Deep overlay background to ground the layout */
-    border-top: 1px solid rgba(255, 255, 255, 0.15);
+    background: rgba(10, 10, 12, 0.95); /* Deep dark background to perfectly isolate footer links */
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
     padding: 25px 15px;
     text-align: center;
-    color: rgba(255, 255, 255, 0.6);
+    color: #ffffff !important;
     font-size: 14px;
     margin-top: 50px;
 }
 
 .site-footer p {
     margin-bottom: 10px;
+    color: #ffffff !important;
+    text-shadow: 1px 1px 4px rgba(0,0,0,0.8) !important;
 }
 
 .footer-links {
@@ -245,20 +239,22 @@ header p {
 }
 
 .footer-links a {
-    color: #1a73e8; /* Matches the vibrant blue branding */
+    color: #3b82f6 !important; /* Brighter high-visibility blue link text */
     text-decoration: none;
     font-weight: bold;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
     transition: color 0.2s ease;
 }
 
 .footer-links a:hover {
-    color: #1557b0;
+    color: #60a5fa !important;
     text-decoration: underline;
 }
 
 .footer-links span {
-    color: rgba(255, 255, 255, 0.3);
+    color: rgba(255, 255, 255, 0.6) !important;
 }
+
 /* --- Global Refresh Button Styling --- */
 .refresh-btn {
     background: rgba(255, 255, 255, 0.2);
@@ -290,7 +286,7 @@ header p {
 }
 
 .league-tag {
-    color: rgba(255, 255, 255, 0.6);
+    color: rgba(255, 255, 255, 0.8);
     font-weight: 500;
 }
 
@@ -346,8 +342,8 @@ header p {
 .vs {
     font-size: 16px;
     font-weight: 900;
-    color: #1a73e8;
-    background: rgba(26, 115, 232, 0.1);
+    color: #ffffff !important;
+    background: #1a73e8 !important;
     padding: 6px 10px;
     border-radius: 50%;
 }
@@ -360,7 +356,7 @@ header p {
     text-align: center;
     font-weight: 400;
     font-size: 14px;
-    color: rgba(255, 255, 255, 0.8);
+    color: rgba(255, 255, 255, 0.9);
 }
 
 /* Live Badge Glow Keyframes */
@@ -376,34 +372,35 @@ header p {
     color: rgba(255, 255, 255, 0.4);
     border: 1px solid rgba(255, 255, 255, 0.15);
 }
+
 /* --- Community Banner Configuration --- */
 .community-card {
     width: 500px;
     max-width: 95%;
     margin: 0 auto 25px auto;
-    background: rgba(255, 255, 255, 0.1); /* Matches your glassy design */
-    border: 1px solid rgba(255, 255, 255, 0.2);
+    background: rgba(15, 15, 18, 0.92) !important; /* Synchronized dark visibility layout */
+    border: 1px solid rgba(255, 255, 255, 0.25);
     border-radius: 18px;
     padding: 18px;
     text-align: center;
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
     color: #fff;
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
 }
 
 .community-card p {
     font-size: 14px;
     line-height: 1.5;
     margin-bottom: 14px;
-    color: rgba(255, 255, 255, 0.9);
+    color: rgba(255, 255, 255, 1) !important;
 }
 
 .community-actions {
     display: flex;
     gap: 12px;
     justify-content: center;
-    flex-wrap: wrap; /* Ensures buttons stack elegantly on narrow screens */
+    flex-wrap: wrap;
 }
 
 /* Base Social Button Setup */
@@ -431,16 +428,16 @@ header p {
     box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
 }
 
-/* Micro-interaction Animation */
 .social-btn:hover {
     transform: translateY(-2px);
-    filter: brightness(1.1); /* Gives a clean shine effect on hover */
+    filter: brightness(1.1);
 }
 
 .social-btn:active {
     transform: translateY(1px);
 }
-.logo{
+
+.logo {
     width: 500px;
     height: 200px;
 }
@@ -461,48 +458,42 @@ header p {
     text-align: center;
     text-decoration: none;
     font-size: 15px;
-    /* CHANGED: Intense font thickeners */
     font-weight: 900 !important; 
     color: #ffffff !important;
-    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.6) !important;
-    border: 1px solid rgba(255, 255, 255, 0.25) !important;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.9) !important; /* Thick text shadow so labels read perfectly */
+    border: 1px solid rgba(255, 255, 255, 0.35) !important;
+    border-radius: 8px;
 }
 
 /* Server 1 - Sleek Crimson Red */
 .btn-1 {
-    background: linear-gradient(135deg, #e50914, #b20710);
-    color: #ffffff;
-    box-shadow: 0 4px 15px rgba(229, 9, 20, 0.3);
+    background: linear-gradient(135deg, #e50914, #b20710) !important;
+    box-shadow: 0 4px 15px rgba(229, 9, 20, 0.4);
 }
 
 /* Server 2 - Premium Deep Indigo/Blue */
 .btn-2 {
-    background: linear-gradient(135deg, #3b82f6, #1d4ed8);
-    color: #ffffff;
-    box-shadow: 0 4px 15px rgba(59, 130, 246, 0.3);
+    background: linear-gradient(135deg, #3b82f6, #1d4ed8) !important;
+    box-shadow: 0 4px 15px rgba(59, 130, 246, 0.4);
 }
 
-/* Interactive hover animation */
 .server-btn:hover {
     transform: translateY(-2px);
-    opacity: 0.9;
-    box-shadow: 0 6px 20px rgba(255, 255, 255, 0.15);
+    opacity: 1 !important;
+    box-shadow: 0 6px 20px rgba(255, 255, 255, 0.25);
 }
 
-/* Forces all text items inside the match card to remain high-intensity */
+/* --- FORCE INTENSE TEXT READABILITY ON ALL CONTAINERS --- */
+.main_container h2,
 .main_container h3, 
 .main_container h4, 
 .main_container span, 
+.main_container p,
 .timings h4, 
-.team h3 {
+.team h3,
+.site-footer,
+.site-footer p {
     color: #ffffff !important;
-    font-weight: 700 !important; /* thickens the font weight style */
-    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.95) !important; /* Strong dark outline behind text characters */
-}
-
-/* Fixes the "vs" badge contrast */
-.vs {
-    color: #ffffff !important;
-    background: #1a73e8 !important; /* Fills the center circle with solid professional blue */
-    font-weight: 900 !important;
+    font-weight: 700 !important; 
+    text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.95), -1px -1px 0px rgba(0,0,0,0.9) !important;
 }
