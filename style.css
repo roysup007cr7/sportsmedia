@@ -71,16 +71,20 @@ header p {
 /* --- Match Card & Elements --- */
 .main_container {
     user-select: none;
-    background: rgba(255, 255, 255, 0.15); 
+    background: rgba(0, 0, 0, 0.4) !important; /* Elegant dark transparent background */
+    backdrop-filter: blur(8px); /* Clean glassmorphism effect */
+    -webkit-backdrop-filter: blur(8px); /* For iOS Safari rendering */
     display: flex;
-    width: 100%; /* Spans full width of the parent .main container */
+    width: 100%;
     max-width: 420px;
     flex-direction: column;
     align-items: center;
     border-radius: 15px;
+    border: 1px solid rgba(255, 255, 255, 0.1); /* Subtle, beautiful outer border */
     transition: transform 0.3s ease;
     padding: 15px;
     color: #fff;
+    margin-bottom: 25px; /* Keeps your match blocks spaced out nicely */
 }
 
 .main_container:hover {
@@ -477,4 +481,19 @@ header p {
     transform: translateY(-2px);
     opacity: 0.9;
     box-shadow: 0 6px 20px rgba(255, 255, 255, 0.15);
+}
+
+/* 1. Keep your server button text clear and sharp */
+.server-btn {
+    color: #ffffff !important;
+    font-weight: 800 !important; /* Thickens the font style */
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
+}
+
+/* 2. Updated for your layout: This targets your team names, league tags, and kickoff times */
+.main_container h3, 
+.main_container span, 
+.timings h4 {
+    color: #ffffff !important;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.8) !important; /* Makes text pop out cleanly against the background wallpaper */
 }
