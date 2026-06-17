@@ -38,25 +38,24 @@ header p {
     color: #fff;
 }
 
-/* --- Main Container Wrapper (FIXED: Now the single, unified solid dark layer) --- */
+/* --- Main Container Wrapper (FIXED: Becomes a spacing tool for separate cards) --- */
 .main {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 25px;
+    gap: 20px; /* This sets the perfect background gap space between each match box */
     width: 500px;
-    max-width: 95%; /* Ensures it scales perfectly on mid-size screens */
+    max-width: 95%; 
     min-height: 600px;
-    padding: 25px 20px;
+    padding: 20px 12px;
     margin: 0 auto 40px auto;
     
-    /* Solid high-intensity background like the 2nd picture (image_a70d41.png) */
-    background: #121214 !important; 
-    border-radius: 20px;
-    border: 1px solid rgba(255, 255, 255, 0.15) !important;
-    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.8) !important;
+    /* Transparent container space so the wallpaper shows between cards */
+    background: transparent !important; 
     backdrop-filter: none !important;
     -webkit-backdrop-filter: none !important;
+    border: none !important;
+    box-shadow: none !important;
 }
 
 .main h1 {
@@ -67,42 +66,32 @@ header p {
     color: white;
     font-size: 36px;
     text-align: center;
-    margin-bottom: 10px;
 }
 
-/* --- Match Card Items (FIXED: No individual background box layers anymore) --- */
+/* --- Individual Match Cards (FIXED: Separate boxes with solid dark background) --- */
 .main_container {
     user-select: none;
-    /* Transparent so they all share the single dark background sheet underneath */
-    background: transparent !important; 
+    /* Solid high-intensity dark color background for each card box */
+    background: #121214 !important; 
     backdrop-filter: none !important; 
     -webkit-backdrop-filter: none !important;
-    box-shadow: none !important;
     
     display: flex;
     width: 100%;
+    max-width: 450px;
     flex-direction: column;
     align-items: center;
-    border-radius: 0px;
-    
-    /* Adds a clean dividing border line between matches */
-    border: none !important;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.12) !important; 
-    padding-bottom: 25px;
-    margin-bottom: 10px;
+    border-radius: 16px; /* Clean rounded card look */
+    border: 1px solid rgba(255, 255, 255, 0.15) !important; 
+    padding: 20px;
     color: #ffffff !important;
+    margin-bottom: 0px; 
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.75) !important; 
     transition: transform 0.2s ease;
 }
 
-/* Removes the bottom separator line from the final match element dynamically */
-.main_container:last-of-type {
-    border-bottom: none !important;
-    margin-bottom: 0;
-    padding-bottom: 0;
-}
-
 .main_container:hover {
-    transform: scale(1.01);
+    transform: scale(1.02);
 }
 
 .main_container p, 
@@ -166,7 +155,7 @@ header p {
     max-width: 350px;
     margin: 15px auto;
     padding: 16px;
-    background-color: #1a73e8; /* Bright Blue to look professional */
+    background-color: #1a73e8; 
     color: white !important;
     text-align: center;
     text-decoration: none;
@@ -199,10 +188,10 @@ header p {
     }
 
     .main {
-        width: 94%;
+        width: 95%;
         min-height: auto;
-        border-radius: 16px;
-        padding: 20px 14px;
+        padding: 15px 5px;
+        gap: 15px;
     }
 
     .main h1 {
@@ -216,17 +205,15 @@ header p {
 
     .main_container {
         width: 100%;
-        padding-left: 0;
-        padding-right: 0;
-        padding-bottom: 20px;
-        border-radius: 0px;
+        padding: 15px 12px;
+        border-radius: 14px;
     }
 }
 
 /* --- Professional Site Footer --- */
 .site-footer {
     width: 100%;
-    background: #121214; /* Uses the same solid deep dark background block */
+    background: #121214; 
     border-top: 1px solid rgba(255, 255, 255, 0.15);
     padding: 25px 15px;
     text-align: center;
@@ -249,7 +236,7 @@ header p {
 }
 
 .footer-links a {
-    color: #3b82f6 !important; /* Brighter high-visibility blue link text */
+    color: #3b82f6 !important; 
     text-decoration: none;
     font-weight: bold;
     text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
@@ -383,75 +370,6 @@ header p {
     border: 1px solid rgba(255, 255, 255, 0.15);
 }
 
-/* --- Community Banner Configuration --- */
-.community-card {
-    width: 500px;
-    max-width: 95%;
-    margin: 0 auto 25px auto;
-    background: #121214 !important; /* Unified solid layer setup */
-    border: 1px solid rgba(255, 255, 255, 0.25);
-    border-radius: 18px;
-    padding: 18px;
-    text-align: center;
-    backdrop-filter: none !important;
-    -webkit-backdrop-filter: none !important;
-    color: #fff;
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
-}
-
-.community-card p {
-    font-size: 14px;
-    line-height: 1.5;
-    margin-bottom: 14px;
-    color: rgba(255, 255, 255, 1) !important;
-}
-
-.community-actions {
-    display: flex;
-    gap: 12px;
-    justify-content: center;
-    flex-wrap: wrap;
-}
-
-/* Base Social Button Setup */
-.social-btn {
-    text-decoration: none;
-    padding: 10px 18px;
-    font-size: 14px;
-    font-weight: bold;
-    border-radius: 30px;
-    color: white !important;
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    transition: transform 0.2s ease, filter 0.2s ease;
-}
-
-/* Official Branding Colors */
-.telegram-btn {
-    background: #0088cc;
-    box-shadow: 0 4px 15px rgba(0, 136, 204, 0.3);
-}
-
-.whatsapp-btn {
-    background: #25D366;
-    box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
-}
-
-.social-btn:hover {
-    transform: translateY(-2px);
-    filter: brightness(1.1);
-}
-
-.social-btn:active {
-    transform: translateY(1px);
-}
-
-.logo {
-    width: 500px;
-    height: 200px;
-}
-
 /* Keeps Server 1 and Server 2 horizontal and spaced out */
 .server-container {
     display: flex;
@@ -470,7 +388,7 @@ header p {
     font-size: 15px;
     font-weight: 900 !important; 
     color: #ffffff !important;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.9) !important; /* Thick text shadow so labels read perfectly */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.9) !important; 
     border: 1px solid rgba(255, 255, 255, 0.35) !important;
     border-radius: 8px;
 }
