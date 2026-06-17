@@ -73,20 +73,23 @@ header p {
 /* --- Match Card & Elements --- */
 .main_container {
     user-select: none;
-    background: rgba(0, 0, 0, 0.4) !important; /* Elegant dark transparent background */
-    backdrop-filter: blur(8px); /* Clean glassmorphism effect */
-    -webkit-backdrop-filter: blur(8px); /* For iOS Safari rendering */
+    /* CHANGED: Switched to a dark, solid 80% opacity overlay to isolate the wallpaper */
+    background: rgba(10, 10, 12, 0.85) !important; 
+    backdrop-filter: blur(12px) !important; 
+    -webkit-backdrop-filter: blur(12px) !important;
     display: flex;
     width: 100%;
     max-width: 420px;
     flex-direction: column;
     align-items: center;
     border-radius: 15px;
-    border: 1px solid rgba(255, 255, 255, 0.1); /* Subtle, beautiful outer border */
+    /* CHANGED: Made the border brighter so users can see the distinct outlines of cards */
+    border: 1px solid rgba(255, 255, 255, 0.2) !important; 
     transition: transform 0.3s ease;
-    padding: 15px;
-    color: #fff;
-    margin-bottom: 25px; /* Keeps your match blocks spaced out nicely */
+    padding: 18px;
+    color: #ffffff !important;
+    margin-bottom: 25px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5) !important; /* Casts a strong shadow behind the card */
 }
 
 .main_container:hover {
@@ -457,11 +460,12 @@ header p {
     padding: 12px 20px;
     text-align: center;
     text-decoration: none;
-    font-weight: bold;
-    border-radius: 8px;
-    font-size: 14px;
-    transition: all 0.3s ease;
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    font-size: 15px;
+    /* CHANGED: Intense font thickeners */
+    font-weight: 900 !important; 
+    color: #ffffff !important;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.6) !important;
+    border: 1px solid rgba(255, 255, 255, 0.25) !important;
 }
 
 /* Server 1 - Sleek Crimson Red */
@@ -484,5 +488,24 @@ header p {
     opacity: 0.9;
     box-shadow: 0 6px 20px rgba(255, 255, 255, 0.15);
 }
+
+/* Forces all text items inside the match card to remain high-intensity */
+.main_container h3, 
+.main_container h4, 
+.main_container span, 
+.timings h4, 
+.team h3 {
+    color: #ffffff !important;
+    font-weight: 700 !important; /* thickens the font weight style */
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.95) !important; /* Strong dark outline behind text characters */
+}
+
+/* Fixes the "vs" badge contrast */
+.vs {
+    color: #ffffff !important;
+    background: #1a73e8 !important; /* Fills the center circle with solid professional blue */
+    font-weight: 900 !important;
+}
+
 
 
