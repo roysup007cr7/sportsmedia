@@ -38,6 +38,14 @@ header p {
     color: #fff;
 }
 
+/* --- Desktop Logo Adjustments --- */
+header .logo {
+    width: 450px;         /* Adjust this width to make it larger/smaller on desktop */
+    height: auto;         /* Keeps the aspect ratio perfect so it doesn't stretch */
+    margin-bottom: 15px;  /* Spacing between the logo and the text below it */
+    object-fit: contain;  /* Ensures the image fits cleanly within its box */
+}
+
 /* --- Main Container Wrapper (FIXED: Becomes a spacing tool for separate cards) --- */
 .main {
     display: flex;
