@@ -484,16 +484,3 @@ header p {
 }
 
 /* 1. Keep your server button text clear and sharp */
-.server-btn {
-    color: #ffffff !important;
-    font-weight: 800 !important; /* Thickens the font style */
-    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
-}
-
-/* 2. Updated for your layout: This targets your team names, league tags, and kickoff times */
-.main_container h3, 
-.main_container span, 
-.timings h4 {
-    color: #ffffff !important;
-    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.8) !important; /* Makes text pop out cleanly against the background wallpaper */
-}
