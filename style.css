@@ -38,24 +38,25 @@ header p {
     color: #fff;
 }
 
-/* --- Main Container Wrapper (FIXED: Completely flat to stop double layering) --- */
+/* --- Main Container Wrapper (FIXED: Now the single, unified solid dark layer) --- */
 .main {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 20px;
+    gap: 25px;
     width: 500px;
     max-width: 95%; /* Ensures it scales perfectly on mid-size screens */
     min-height: 600px;
-    padding: 20px 12px;
+    padding: 25px 20px;
     margin: 0 auto 40px auto;
     
-    /* Forces this outer wrapper to be completely invisible so no double layers show */
-    background: transparent !important; 
+    /* Solid high-intensity background like the 2nd picture (image_a70d41.png) */
+    background: #121214 !important; 
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.15) !important;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.8) !important;
     backdrop-filter: none !important;
     -webkit-backdrop-filter: none !important;
-    border: none !important;
-    box-shadow: none !important;
 }
 
 .main h1 {
@@ -66,34 +67,42 @@ header p {
     color: white;
     font-size: 36px;
     text-align: center;
+    margin-bottom: 10px;
 }
 
-/* --- Match Card & Elements (FIXED: Darkened background for extreme text readability) --- */
+/* --- Match Card Items (FIXED: No individual background box layers anymore) --- */
 .main_container {
     user-select: none;
-    /* This makes the container solid, blocking the wallpaper entirely */
-   background:#151515 !important;
-    /* Remove backdrop-filter to stop the blur effect */
+    /* Transparent so they all share the single dark background sheet underneath */
+    background: transparent !important; 
     backdrop-filter: none !important; 
     -webkit-backdrop-filter: none !important;
+    box-shadow: none !important;
     
     display: flex;
     width: 100%;
-    max-width: 420px;
     flex-direction: column;
     align-items: center;
-    border-radius: 15px;
-    /* Optional: A subtle border to define the edge of your solid box */
-    border: 1px solid rgba(255, 255, 255, 0.1) !important; 
-    padding: 18px;
+    border-radius: 0px;
+    
+    /* Adds a clean dividing border line between matches */
+    border: none !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.12) !important; 
+    padding-bottom: 25px;
+    margin-bottom: 10px;
     color: #ffffff !important;
-    margin-bottom: 25px;
-    /* Solid shadow to ground the box */
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8) !important; 
+    transition: transform 0.2s ease;
+}
+
+/* Removes the bottom separator line from the final match element dynamically */
+.main_container:last-of-type {
+    border-bottom: none !important;
+    margin-bottom: 0;
+    padding-bottom: 0;
 }
 
 .main_container:hover {
-    transform: scale(1.02);
+    transform: scale(1.01);
 }
 
 .main_container p, 
@@ -190,15 +199,10 @@ header p {
     }
 
     .main {
-        width: 92%;
+        width: 94%;
         min-height: auto;
         border-radius: 16px;
-        padding: 15px 10px;
-        /* FIXED: Ensures mobile wrapper never overrides transparency or adds double lines */
-        background: transparent !important;
-        border: none !important;
-        box-shadow: none !important;
-        backdrop-filter: none !important;
+        padding: 20px 14px;
     }
 
     .main h1 {
@@ -212,16 +216,18 @@ header p {
 
     .main_container {
         width: 100%;
-        padding: 12px;
-        border-radius: 12px;
+        padding-left: 0;
+        padding-right: 0;
+        padding-bottom: 20px;
+        border-radius: 0px;
     }
 }
 
-/* --- Professional Site Footer (FIXED: Max Contrast for Disclaimer text) --- */
+/* --- Professional Site Footer --- */
 .site-footer {
     width: 100%;
-    background: rgba(10, 10, 12, 0.95); /* Deep dark background to perfectly isolate footer links */
-    border-top: 1px solid rgba(255, 255, 255, 0.2);
+    background: #121214; /* Uses the same solid deep dark background block */
+    border-top: 1px solid rgba(255, 255, 255, 0.15);
     padding: 25px 15px;
     text-align: center;
     color: #ffffff !important;
@@ -261,14 +267,16 @@ header p {
 
 /* --- Global Refresh Button Styling --- */
 .refresh-btn {
-    background:#222;
-    border:1px solid rgba(255,255,255,0.3);
-    color:white;
-    padding:10px 20px;
-    font-size:15px;
-    font-weight:bold;
-    border-radius:30px;
-    cursor:pointer;
+    background: rgba(255, 255, 255, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    color: white;
+    padding: 10px 20px;
+    font-size: 15px;
+    font-weight: bold;
+    border-radius: 30px;
+    cursor: pointer;
+    backdrop-filter: blur(5px);
+    transition: all 0.3s ease;
 }
 
 .refresh-btn:hover {
@@ -380,20 +388,15 @@ header p {
     width: 500px;
     max-width: 95%;
     margin: 0 auto 25px auto;
-
-    background: #111 !important;
-
-    border: 1px solid rgba(255,255,255,0.15);
+    background: #121214 !important; /* Unified solid layer setup */
+    border: 1px solid rgba(255, 255, 255, 0.25);
     border-radius: 18px;
-
-    padding:18px;
-    text-align:center;
-
-    backdrop-filter:none !important;
-    -webkit-backdrop-filter:none !important;
-
-    box-shadow:0 5px 15px rgba(0,0,0,0.6);
-    color:white;
+    padding: 18px;
+    text-align: center;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    color: #fff;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
 }
 
 .community-card p {
@@ -502,5 +505,5 @@ header p {
 .site-footer p {
     color: #ffffff !important;
     font-weight: 700 !important; 
-   text-shadow: 1px 1px 3px rgba(0,0,0,0.8) !important;
+    text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.95), -1px -1px 0px rgba(0,0,0,0.9) !important;
 }
