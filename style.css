@@ -435,3 +435,46 @@ header p {
     width: 500px;
     height: 200px;
 }
+
+/* Keeps Server 1 and Server 2 horizontal and spaced out */
+.server-container {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+    width: 100%;
+    margin-top: 10px;
+}
+
+/* Base button styling matching your dark theme */
+.server-btn {
+    flex: 1;
+    padding: 12px 20px;
+    text-align: center;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 8px;
+    font-size: 14px;
+    transition: all 0.3s ease;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Server 1 - Sleek Crimson Red */
+.btn-1 {
+    background: linear-gradient(135deg, #e50914, #b20710);
+    color: #ffffff;
+    box-shadow: 0 4px 15px rgba(229, 9, 20, 0.3);
+}
+
+/* Server 2 - Premium Deep Indigo/Blue */
+.btn-2 {
+    background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+    color: #ffffff;
+    box-shadow: 0 4px 15px rgba(59, 130, 246, 0.3);
+}
+
+/* Interactive hover animation */
+.server-btn:hover {
+    transform: translateY(-2px);
+    opacity: 0.9;
+    box-shadow: 0 6px 20px rgba(255, 255, 255, 0.15);
+}
