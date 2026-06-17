@@ -71,21 +71,25 @@ header p {
 /* --- Match Card & Elements (FIXED: Darkened background for extreme text readability) --- */
 .main_container {
     user-select: none;
-    background: rgba(15, 15, 18, 0.92) !important; /* Deep dark solid coat to block background bleed */
-    backdrop-filter: blur(14px) !important; 
-    -webkit-backdrop-filter: blur(14px) !important;
+    /* This makes the container solid, blocking the wallpaper entirely */
+    background: rgba(10, 10, 12, 1) !important; 
+    /* Remove backdrop-filter to stop the blur effect */
+    backdrop-filter: none !important; 
+    -webkit-backdrop-filter: none !important;
+    
     display: flex;
     width: 100%;
     max-width: 420px;
     flex-direction: column;
     align-items: center;
     border-radius: 15px;
-    border: 1px solid rgba(255, 255, 255, 0.25) !important; /* Clear, sharp outer crisp boundary line */
-    transition: transform 0.3s ease;
+    /* Optional: A subtle border to define the edge of your solid box */
+    border: 1px solid rgba(255, 255, 255, 0.1) !important; 
     padding: 18px;
     color: #ffffff !important;
     margin-bottom: 25px;
-    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.7) !important;
+    /* Solid shadow to ground the box */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8) !important; 
 }
 
 .main_container:hover {
