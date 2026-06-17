@@ -41,6 +41,7 @@ header p {
 }
 
 /* --- Main Container Wrapper --- */
+/* --- Main Container Wrapper --- */
 .main {
     display: flex;
     flex-direction: column;
@@ -51,11 +52,12 @@ header p {
     min-height: 600px;
     padding: 20px 12px;
     margin: 0 auto 40px auto;
-    border-radius: 22px;
-    border: 2px solid rgb(255, 255, 255);
-    background: rgba(0, 0, 0, 0.4); /* Darkened slightly for better text contrast */
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
+    
+    /* REMOVED backgrounds and filters here to solve the double-layering bug */
+    background: transparent !important; 
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    border: none !important;
 }
 
 .main h1 {
@@ -483,4 +485,4 @@ header p {
     box-shadow: 0 6px 20px rgba(255, 255, 255, 0.15);
 }
 
-/* 1. Keep your server button text clear and sharp */
+
