@@ -156,7 +156,7 @@
             </div>
         </div>
 
-        <div class="main_container" data-start="2026-06-19T14:00:00+05:30">
+        <div class="main_container" data-start="2026-06-19T06:30:00+05:30">
             <div class="match-meta">
                 <span class="league-tag">🏆 FIFA World Cup</span>
                 <span class="status-badge"></span>
@@ -205,6 +205,8 @@
         </div>
 
     </div> 
+
+    <button id="backToTop" title="Go to top">↑</button>
     
     <footer class="site-footer">
         <p>&copy; 2026 SPORTS MEDIA.in. All rights reserved.</p>
@@ -229,18 +231,22 @@
             if (!startTimeString) return;
 
             const matchStartTime = new Date(startTimeString);
-            const matchEndTime = new Date(matchStartTime.getTime() + (2 * 60 * 60 * 1000)); // 2-hour duration window
+            const matchEndTime = new Date(matchStartTime.getTime() + (2 * 60 * 60 * 1000)); // 2-hour window
             
             const badge = card.querySelector('.status-badge');
             const timeDisplay = card.querySelector('.match-time-display');
+            const servers = card.querySelectorAll('.server-btn');
             
-            // 1. ENGINE CONTROL FOR GLOW LIVE VISUAL BADGES
+            // 1. ENGINE CONTROL FOR GLOW LIVE VISUAL BADGES & BUTTON GLOW EFFECTS
             if (now < matchStartTime) {
                 if (badge) {
                     badge.className = "status-badge upcoming-badge";
                     badge.innerHTML = "🕒 UPCOMING";
                 }
                 card.style.opacity = "1"; 
+                
+                // Clear any leftover live classes if checking backwards
+                servers.forEach(btn => btn.classList.remove('live-server-glow'));
             } 
             else if (now >= matchStartTime && now <= matchEndTime) {
                 if (badge) {
@@ -248,6 +254,9 @@
                     badge.innerHTML = "● LIVE";
                 }
                 card.style.opacity = "1";
+                
+                // OPTIMIZATION 2: Make server buttons pulse aggressively to drive clicks!
+                servers.forEach(btn => btn.classList.add('live-server-glow'));
             } 
             else {
                 if (badge) {
@@ -255,6 +264,9 @@
                     badge.innerHTML = "🏁 FINISHED";
                 }
                 card.style.opacity = "0.6";
+                
+                // Stop glowing once match finishes
+                servers.forEach(btn => btn.classList.remove('live-server-glow'));
             }
 
             // 2. USER DEVICE HARDWARE TIME ZONE DETECTOR & RENDERER
@@ -272,9 +284,22 @@
         });
     }
 
+    // OPTIMIZATION 3: BACK TO TOP SCRIPT CONTROLLER
+    const bttButton = document.getElementById("backToTop");
+    window.onscroll = function() {
+        if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
+            bttButton.classList.add("visible");
+        } else {
+            bttButton.classList.remove("visible");
+        }
+    };
+    bttButton.addEventListener("click", function() {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+
     document.addEventListener("DOMContentLoaded", () => {
         updateMatchSignalsAndTimes();
-        setInterval(updateMatchSignalsAndTimes, 20000); // Dynamic checks every 20s
+        setInterval(updateMatchSignalsAndTimes, 20000); // Dynamic check iteration
     });
     </script>
 
@@ -309,7 +334,9 @@
             if (timeLeft <= 0) {
                 clearInterval(countdownInterval);
                 btnText.innerHTML = "🔄 Syncing Links...";
-                window.location.reload(); 
+                
+                // Forced fresh URL variable injection to defeat device local storage caches
+                window.location.href = window.location.origin + window.location.pathname + '?v=' + new Date().getTime();
             } else {
                 btnText.innerHTML = `Checking Servers... (${timeLeft}s)`;
             }

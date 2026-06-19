@@ -299,11 +299,60 @@ header .logo {
     border-radius: 50%;
 }
 
-/* Live Badge Glow Keyframes */
+/* --- KEYFRAME ANIMATIONS --- */
 @keyframes liveBlinkAnimation {
     0% { opacity: 1; }
     50% { opacity: 0.4; }
     100% { opacity: 1; }
+}
+
+@keyframes serverPulse {
+    0% { transform: scale(1); box-shadow: 0 4px 15px rgba(255, 255, 255, 0.1); }
+    50% { transform: scale(1.03); box-shadow: 0 8px 25px rgba(26, 115, 232, 0.6); border-color: rgba(255,255,255,0.8) !important; }
+    100% { transform: scale(1); box-shadow: 0 4px 15px rgba(255, 255, 255, 0.1); }
+}
+
+/* --- IMPROVEMENT 2: DYNAMIC LIVE STREAMING SERVER GLOWS --- */
+.live-server-glow {
+    animation: serverPulse 2s infinite ease-in-out !important;
+    border: 1px solid rgba(255, 255, 255, 0.6) !important;
+}
+
+/* --- IMPROVEMENT 3: FLOATING BACK TO TOP BUTTON CLASSIC STYLING --- */
+#backToTop {
+    position: fixed;
+    bottom: 25px;
+    right: 25px;
+    z-index: 99999;
+    width: 45px;
+    height: 45px;
+    background: rgba(26, 115, 232, 0.85);
+    color: white;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    font-size: 20px;
+    font-weight: bold;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    backdrop-filter: blur(5px);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.4s, visibility 0.4s, transform 0.2s;
+    transform: translateY(15px);
+}
+
+#backToTop.visible {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+#backToTop:hover {
+    background: #1a73e8;
+    transform: scale(1.1);
 }
 
 /* Keeps Server Rows Configured Cleanly */
@@ -325,7 +374,7 @@ header .logo {
     text-decoration: none;
     font-size: 14px;
     border-radius: 8px;
-    transition: transform 0.2s, box-shadow 0.2s;
+    transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
 }
 
 /* Server 1 - Sleek Crimson Red */
