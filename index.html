@@ -96,12 +96,34 @@
 
     <h3 class="match_title">LATEST BREAKING NEWS</h3>
     <div class="news-container">
-        <div id="news-feed-loader" style="text-align:center; color:rgba(255,255,255,0.6); padding:10px; font-size: 14px;">
-            ⏳ Connecting to live media updates...
-        </div>
-        <div id="news-grid" class="news-grid"></div>
-    </div>
+        <div class="news-grid">
+            
+            <div class="news-card">
+                <div>
+                    <h4>Moore made to work hard as Precise bags Coronation crown</h4>
+                    <p>Precise backed up her victory in the Irish 1,000 Guineas by landing the Coronation Stakes at Ro...</p>
+                </div>
+                <a href="#" class="news-link">Read Full Story →</a>
+            </div>
 
+            <div class="news-card">
+                <div>
+                    <h4>Leeds latest: Club working on deals for Fulham's Wilson and Brandt</h4>
+                    <p>Click read more below to access full breaking analytical breakdowns....</p>
+                </div>
+                <a href="#" class="news-link">Read Full Story →</a>
+            </div>
+
+            <div class="news-card">
+                <div>
+                    <h4>Satono Reve fancied to land QEII Jubilee crown at Royal Ascot</h4>
+                    <p>Ahead of the fifth and final day of Royal Ascot 2026, the Weekend Winners team reconvene to dis...</p>
+                </div>
+                <a href="#" class="news-link">Read Full Story →</a>
+            </div>
+
+        </div>
+    </div>
     <h3 class="match_title">MATCHES</h3>
 
     <div style="width: 100%; display: flex; justify-content: center; margin: 15px 0 25px 0; clear: both;">
@@ -111,8 +133,7 @@
     </div>
 
     <div class="main">
-       <!-- ==================== MATCH 1: USA vs Australia ==================== -->
-<div class="main_container" data-start="2026-06-20T00:30:00+05:30">
+       <div class="main_container" data-start="2026-06-20T00:30:00+05:30">
     <div class="match-meta">
         <span class="league-tag">🏆 FIFA World Cup</span>
         <div style="display: flex; gap: 6px; align-items: center;">
@@ -143,8 +164,7 @@
     </div>
 </div>
 
-        <!-- ==================== MATCH 2: Scotland vs Morocco ==================== -->
-<div class="main_container" data-start="2026-06-20T03:30:00+05:30">
+        <div class="main_container" data-start="2026-06-20T03:30:00+05:30">
     <div class="match-meta">
         <span class="league-tag">🏆 FIFA World Cup</span>
         <div style="display: flex; gap: 6px; align-items: center;">
@@ -188,8 +208,7 @@
              <script src="https://formssternlystately.com/0da92367a92071637c7a52612740dba0/invoke.js"></script>
         </div>
 
-       <!-- ==================== MATCH 3: Brazil vs Haiti ==================== -->
-<div class="main_container" data-start="2026-06-20T06:30:00+05:30">
+       <div class="main_container" data-start="2026-06-20T06:30:00+05:30">
     <div class="match-meta">
         <span class="league-tag">🏆 FIFA World Cup</span>
         <div style="display: flex; gap: 6px; align-items: center;">
@@ -220,7 +239,6 @@
     </div>
 </div>
 
-<!-- ==================== MATCH 4: Turkiye vs Paraguay ==================== -->
 <div class="main_container" data-start="2026-06-20T08:30:00+05:30">
     <div class="match-meta">
         <span class="league-tag">🏆 FIFA World Cup</span>
@@ -291,50 +309,6 @@
     </footer>
 
     <script>
-    // AUTOMATED REAL SPORTS NEWS FETCH ENGINE
-    async function fetchRealSportsNews() {
-        const newsGrid = document.getElementById('news-grid');
-        const loader = document.getElementById('news-feed-loader');
-        if(!newsGrid || !loader) return;
-
-        const rssUrl = encodeURIComponent('https://www.skysports.com/rss/12040');
-        const apiUrl = `https://api.rss2json.com/v1/api.json?rss_url=${rssUrl}`;
-
-        try {
-            const response = await fetch(apiUrl);
-            const data = await response.json();
-
-            if (data.status === 'ok' && data.items && data.items.length > 0) {
-                loader.style.display = 'none';
-                newsGrid.innerHTML = ''; 
-                
-                const articles = data.items.slice(0, 3); 
-                
-                articles.forEach(item => {
-                    const card = document.createElement('div');
-                    card.className = 'news-card';
-                    
-                    let itemDesc = item.description || "Click read more below to access full breaking analytical breakdowns.";
-                    const cleanDesc = itemDesc.replace(/<[^>]*>/g, '').substring(0, 95) + '...';
-
-                    card.innerHTML = `
-                        <div>
-                            <h4>${item.title}</h4>
-                            <p>${cleanDesc}</p>
-                        </div>
-                        <a href="${item.link}" target="_blank" class="news-link">Read Full Story →</a>
-                    `;
-                    newsGrid.appendChild(card);
-                });
-            } else {
-                loader.innerHTML = "🏁 Standby for updated tournament insights.";
-            }
-        } catch (error) {
-            console.error("News load error:", error);
-            loader.innerHTML = "⚽ Live scoreboard data streaming normal.";
-        }
-    }
-
     function updateMatchSignalsAndTimes() {
         const now = new Date();
         const matches = document.querySelectorAll('.main_container[data-start]');
@@ -445,9 +419,7 @@
     // AUTOMATED SPORTS CHAT SIMULATOR ENGINE
     document.addEventListener("DOMContentLoaded", () => {
         updateMatchSignalsAndTimes();
-        fetchRealSportsNews(); 
         setInterval(updateMatchSignalsAndTimes, 20000); 
-        setInterval(fetchRealSportsNews, 180000); 
 
         const chatContainer = document.getElementById("chat-messages");
         const viewerCounter = document.getElementById("live-chat-viewers");
