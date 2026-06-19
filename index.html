@@ -156,7 +156,7 @@
             </div>
         </div>
 
-        <div class="main_container" data-start="2026-06-19T14:10:00+05:30">
+        <div class="main_container" data-start="2026-06-19T06:30:00+05:30">
             <div class="match-meta">
                 <span class="league-tag">🏆 FIFA World Cup</span>
                 <span class="status-badge"></span>
@@ -284,7 +284,7 @@
         });
     }
 
-    // OPTIMIZATION 3: BACK TO TOP SCRIPT CONTROLLER
+    // FLOATING BACK TO TOP SCRIPT CONTROLLER
     const bttButton = document.getElementById("backToTop");
     window.onscroll = function() {
         if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
@@ -335,7 +335,7 @@
                 clearInterval(countdownInterval);
                 btnText.innerHTML = "🔄 Syncing Links...";
                 
-                // Forced fresh URL variable injection to defeat device local storage caches
+                // CRITICAL FIXED: Force bypass of mobile storage cache with unique timestamp injection
                 window.location.href = window.location.origin + window.location.pathname + '?v=' + new Date().getTime();
             } else {
                 btnText.innerHTML = `Checking Servers... (${timeLeft}s)`;
