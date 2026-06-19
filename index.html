@@ -191,7 +191,6 @@
         </div>
 
         <div class="ad-container" style="text-align: center; margin: 20px 0;">
-            <script async="async" data-cfasync="false" src="https://formssternlystately.com/00eab0ceea0ea96e1764d988f090a9e4/invoke.js"></script>
             <div id="container-00eab0ceea0ea96e1764d988f090a9e4"></div>
         </div>
 
@@ -310,13 +309,12 @@
     </footer>
 
     <script>
-    // NEW LOGIC TO FETCH LIVE REAL SPORTS NEWS
+    // AUTOMATED REAL SPORTS NEWS FETCH ENGINE
     async function fetchRealSportsNews() {
         const newsGrid = document.getElementById('news-grid');
         const loader = document.getElementById('news-feed-loader');
         if(!newsGrid || !loader) return;
 
-        // Uses free RSS-to-JSON engine pulling Sky Sports top football headlines
         const rssUrl = encodeURIComponent('https://www.skysports.com/rss/12040');
         const apiUrl = `https://api.rss2json.com/v1/api.json?rss_url=${rssUrl}`;
 
@@ -324,17 +322,19 @@
             const response = await fetch(apiUrl);
             const data = await response.json();
 
-            if (data.status === 'ok') {
+            if (data.status === 'ok' && data.items && data.items.length > 0) {
                 loader.style.display = 'none';
-                // Pulls top 3 real-time items
+                newsGrid.innerHTML = ''; // Keep grid clear for updates
+                
                 const articles = data.items.slice(0, 3); 
                 
                 articles.forEach(item => {
                     const card = document.createElement('div');
                     card.className = 'news-card';
                     
-                    // Safely strips inner HTML elements from feed data summary
-                    const cleanDesc = item.description.replace(/<[^>]*>/g, '').substring(0, 95) + '...';
+                    // Safe parsing text description logic string length filter 
+                    let itemDesc = item.description || "Click read more below to access full breaking analytical breakdowns.";
+                    const cleanDesc = itemDesc.replace(/<[^>]*>/g, '').substring(0, 95) + '...';
 
                     card.innerHTML = `
                         <div>
@@ -346,9 +346,10 @@
                     newsGrid.appendChild(card);
                 });
             } else {
-                loader.innerHTML = "🏁 Standby for updated world tournament insights.";
+                loader.innerHTML = "🏁 Standby for updated tournament insights.";
             }
         } catch (error) {
+            console.error("News load error:", error);
             loader.innerHTML = "⚽ Live scoreboard data streaming normal.";
         }
     }
@@ -368,7 +369,6 @@
             const timeDisplay = card.querySelector('.match-time-display');
             const servers = card.querySelectorAll('.server-btn');
             
-            // 1. ENGINE CONTROL FOR GLOW LIVE VISUAL BADGES & BUTTON GLOW EFFECTS
             if (now < matchStartTime) {
                 if (badge) {
                     badge.className = "status-badge upcoming-badge";
@@ -394,7 +394,6 @@
                 servers.forEach(btn => btn.classList.remove('live-server-glow'));
             }
 
-            // 2. USER DEVICE HARDWARE TIME ZONE DETECTOR & RENDERER
             const localTimeOptions = { hour: '2-digit', minute: '2-digit', hour12: true };
             const localTimeStr = matchStartTime.toLocaleTimeString([], localTimeOptions);
             const localDateStr = matchStartTime.toLocaleDateString([], { month: 'short', day: 'numeric' });
@@ -422,7 +421,7 @@
         window.scrollTo({ top: 0, behavior: 'smooth' });
     });
 
-    // IMPROVEMENT 4: AUTOMATIC NATIVE/CLIPBOARD SHARE MODULE
+    // AUTOMATIC NATIVE/CLIPBOARD SHARE MODULE
     document.querySelectorAll('.share-match-btn').forEach(btn => {
         btn.addEventListener('click', function(e) {
             e.stopPropagation();
@@ -433,7 +432,6 @@
             
             const shareTitle = "Watch Live Stream";
             const shareText = `Watching ${t1} vs ${t2} live right now in HD here! ⚽`;
-            // Hardcoding your live domain so WhatsApp explicitly reads it as clickable
             const shareUrl = "https://sportsmedia-hazel.vercel.app/";
             const fullMessage = `${shareText}\n\n${shareUrl}`;
 
@@ -444,7 +442,6 @@
                     url: shareUrl
                 }).catch(err => console.log("Share failed or canceled"));
             } else {
-                // Clipboard safe copy fallback for desktop systems
                 navigator.clipboard.writeText(fullMessage).then(() => {
                     const originalText = this.innerHTML;
                     this.innerHTML = "✅ Copied!";
@@ -460,11 +457,12 @@
         });
     });
 
-    // --- AUTOMATED SPORTS CHAT SIMULATOR ENGINE ---
+    // AUTOMATED SPORTS CHAT SIMULATOR ENGINE
     document.addEventListener("DOMContentLoaded", () => {
         updateMatchSignalsAndTimes();
         fetchRealSportsNews(); // Fires News Fetch Engine on Load
-        setInterval(updateMatchSignalsAndTimes, 20000); // Dynamic check iteration
+        setInterval(updateMatchSignalsAndTimes, 20000); 
+        setInterval(fetchRealSportsNews, 180000); // Refreshes actual news feed background every 3 mins
 
         const chatContainer = document.getElementById("chat-messages");
         const viewerCounter = document.getElementById("live-chat-viewers");
@@ -540,7 +538,7 @@
         }
         setTimeout(generateMessage, 1200);
 
-        // --- NEW INTEGRATION: USER INTERACTIVE CHAT ACTION HANDLER ---
+        // USER INTERACTIVE CHAT ACTION HANDLER
         const userInput = document.getElementById("chat-user-input");
         const sendBtn = document.getElementById("chat-send-btn");
 
@@ -553,7 +551,7 @@
 
             const userSpan = document.createElement("span");
             userSpan.className = "chat-user-node";
-            userSpan.style.color = "#00ffcc"; // Neon accent identifier for actual user
+            userSpan.style.color = "#00ffcc"; 
             userSpan.textContent = "You:";
 
             const textSpan = document.createElement("span");
@@ -564,10 +562,7 @@
             msgDiv.appendChild(textSpan);
             chatContainer.appendChild(msgDiv);
 
-            // Instant container auto-scroll response
             chatContainer.scrollTop = chatContainer.scrollHeight;
-            
-            // Clean values for next entry sequence
             userInput.value = "";
         }
 
@@ -611,8 +606,6 @@
             if (timeLeft <= 0) {
                 clearInterval(countdownInterval);
                 btnText.innerHTML = "🔄 Syncing Links...";
-                
-                // Force bypass of mobile storage cache with unique timestamp injection
                 window.location.href = window.location.origin + window.location.pathname + '?v=' + new Date().getTime();
             } else {
                 btnText.innerHTML = `Checking Servers... (${timeLeft}s)`;

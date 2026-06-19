@@ -73,10 +73,12 @@ header .logo {
     text-align: center;
 }
 
-/* --- NEW REAL-TIME SPORTS NEWS STYLES --- */
+/* ==========================================================================
+   AUTO-FETCH LIVE NEWS ENGINE LAYOUT (UPDATED)
+   ========================================================================== */
 .news-container {
     max-width: 95%;
-    width: 450px; /* Aligns perfectly with your main columns and match cards */
+    width: 450px; 
     margin: 0 auto 30px auto;
     background: #121214 !important;
     border: 1px solid rgba(255, 255, 255, 0.15) !important;
@@ -84,12 +86,14 @@ header .logo {
     padding: 20px;
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.75) !important;
     box-sizing: border-box;
+    position: relative;
 }
 
 .news-grid {
     display: flex;
     flex-direction: column;
     gap: 15px;
+    transition: opacity 0.3s ease;
 }
 
 .news-card {
@@ -97,15 +101,16 @@ header .logo {
     border: 1px solid rgba(255, 255, 255, 0.1);
     border-radius: 12px;
     padding: 15px;
-    transition: transform 0.2s ease, border-color 0.2s ease;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    animation: newsFadeIn 0.4s ease forwards;
 }
 
 .news-card:hover {
     transform: translateY(-3px);
     border-color: #00ffcc;
+    box-shadow: 0 4px 12px rgba(0, 255, 204, 0.15);
 }
 
 .news-card h4 {
@@ -136,6 +141,37 @@ header .logo {
 .news-link:hover {
     color: #ffffff !important;
     text-decoration: underline;
+}
+
+/* Auto-Fetch Loader & State Utilities */
+#news-feed-loader {
+    text-align: center;
+    padding: 20px 0;
+    font-size: 14px;
+    font-weight: 600;
+    color: #ffffff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+.spinner {
+    width: 24px;
+    height: 24px;
+    border: 3px solid rgba(255, 255, 255, 0.1);
+    border-top-color: #00ffcc;
+    border-radius: 50%;
+    animation: spinLoader 0.8s linear infinite;
+}
+
+@keyframes spinLoader {
+    to { transform: rotate(360deg); }
+}
+
+@keyframes newsFadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
 }
 
 /* --- Individual Match Cards --- */
@@ -329,7 +365,7 @@ header .logo {
     border: 1px solid rgba(255, 255, 255, 0.15);
 }
 
-/* IMPROVEMENT 4: COMPACT SOCIAL SHARE BUTTON */
+/* COMPACT SOCIAL SHARE BUTTON */
 .share-match-btn {
     background: rgba(255, 255, 255, 0.12);
     border: 1px solid rgba(255, 255, 255, 0.25);
@@ -397,13 +433,13 @@ header .logo {
     100% { transform: scale(1); box-shadow: 0 4px 15px rgba(255, 255, 255, 0.1); }
 }
 
-/* --- IMPROVEMENT 2: DYNAMIC LIVE STREAMING SERVER GLOWS --- */
+/* --- DYNAMIC LIVE STREAMING SERVER GLOWS --- */
 .live-server-glow {
     animation: serverPulse 2s infinite ease-in-out !important;
     border: 1px solid rgba(255, 255, 255, 0.6) !important;
 }
 
-/* --- IMPROVEMENT 3: FLOATING BACK TO TOP BUTTON CLASSIC STYLING --- */
+/* --- FLOATING BACK TO TOP BUTTON CLASSIC STYLING --- */
 #backToTop {
     position: fixed;
     bottom: 25px;
@@ -616,10 +652,7 @@ header .logo {
     }
 }
 
-/* ==========================================================================
-   INTERACTIVE LIVE CHAT INPUT BOX EXTENSION
-   ========================================================================== */
-
+/* --- INTERACTIVE LIVE CHAT INPUT BOX EXTENSION --- */
 .chat-input-bar {
     display: flex;
     background: rgba(255, 255, 255, 0.03);
@@ -639,7 +672,7 @@ header .logo {
     color: #ffffff !important;
     font-size: 13px;
     outline: none;
-    text-shadow: none !important; /* Strips harsh shadow engine from input text */
+    text-shadow: none !important; 
     transition: border-color 0.2s, background 0.2s;
 }
 
