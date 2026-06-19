@@ -224,8 +224,11 @@
                 </div>
                 <span class="chat-viewer-count" id="live-chat-viewers">12,450 online</span>
             </div>
-            <div class="chat-messages-container" id="chat-messages">
-                </div>
+            <div class="chat-messages-container" id="chat-messages"></div>
+            <div class="chat-input-bar">
+                <input type="text" id="chat-user-input" placeholder="Type a message to chat live..." maxlength="100">
+                <button id="chat-send-btn">Send</button>
+            </div>
         </div>
 
     </div> 
@@ -431,6 +434,44 @@
             setTimeout(generateMessage, i * 200);
         }
         setTimeout(generateMessage, 1200);
+
+        // --- NEW INTEGRATION: USER INTERACTIVE CHAT ACTION HANDLER ---
+        const userInput = document.getElementById("chat-user-input");
+        const sendBtn = document.getElementById("chat-send-btn");
+
+        function handleUserMessageSubmit() {
+            const text = userInput.value.trim();
+            if (text === "") return;
+
+            const msgDiv = document.createElement("div");
+            msgDiv.className = "chat-msg";
+
+            const userSpan = document.createElement("span");
+            userSpan.className = "chat-user-node";
+            userSpan.style.color = "#00ffcc"; // Neon accent identifier for actual user
+            userSpan.textContent = "You:";
+
+            const textSpan = document.createElement("span");
+            textSpan.className = "chat-text-node";
+            textSpan.textContent = " " + text;
+
+            msgDiv.appendChild(userSpan);
+            msgDiv.appendChild(textSpan);
+            chatContainer.appendChild(msgDiv);
+
+            // Instant container auto-scroll response
+            chatContainer.scrollTop = chatContainer.scrollHeight;
+            
+            // Clean values for next entry sequence
+            userInput.value = "";
+        }
+
+        sendBtn.addEventListener("click", handleUserMessageSubmit);
+        userInput.addEventListener("keypress", (e) => {
+            if (e.key === "Enter") {
+                handleUserMessageSubmit();
+            }
+        });
     });
     </script>
 
