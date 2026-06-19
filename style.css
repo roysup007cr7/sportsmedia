@@ -9,7 +9,7 @@
 }
 
 body {
-    background-image: url(wall4.jpg);
+    background-image: url('wall4.jpg');
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
@@ -74,7 +74,7 @@ header .logo {
 }
 
 /* ==========================================================================
-   AUTO-FETCH LIVE NEWS ENGINE LAYOUT (UPDATED)
+   AUTO-FETCH LIVE NEWS ENGINE LAYOUT
    ========================================================================== */
 .news-container {
     max-width: 95%;
@@ -149,7 +149,6 @@ header .logo {
     padding: 20px 0;
     font-size: 14px;
     font-weight: 600;
-    color: #ffffff;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -188,8 +187,7 @@ header .logo {
     border-radius: 16px;
     border: 1px solid rgba(255, 255, 255, 0.15) !important; 
     padding: 20px;
-    color: #ffffff !important;
-    margin-bottom: 0px; 
+    margin-bottom: 0; 
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.75) !important; 
     transition: transform 0.2s ease;
 }
@@ -291,15 +289,12 @@ header .logo {
     border-top: 1px solid rgba(255, 255, 255, 0.15);
     padding: 25px 15px;
     text-align: center;
-    color: #ffffff !important;
     font-size: 14px;
     margin-top: 50px;
 }
 
 .site-footer p {
     margin-bottom: 10px;
-    color: #ffffff !important;
-    text-shadow: 1px 1px 4px rgba(0,0,0,0.8) !important;
 }
 
 .footer-links {
@@ -369,13 +364,11 @@ header .logo {
 .share-match-btn {
     background: rgba(255, 255, 255, 0.12);
     border: 1px solid rgba(255, 255, 255, 0.25);
-    color: #ffffff !important;
     font-size: 11px !important;
     font-weight: bold !important;
     padding: 4px 10px;
     border-radius: 20px;
     cursor: pointer;
-    text-shadow: none !important;
     transition: background 0.2s ease, transform 0.1s ease;
 }
 
@@ -610,31 +603,8 @@ header .logo {
 }
 
 .chat-text-node {
-    color: rgba(255, 255, 255, 0.95) !important;
     font-weight: 500 !important;
     word-break: break-word;
-}
-
-/* --- FORCE INTENSE TEXT READABILITY ON ALL CONTAINERS --- */
-.main_container h2,
-.main_container h3, 
-.main_container h4, 
-.main_container span, 
-.main_container p,
-.timings h4, 
-.team h3,
-.site-footer,
-.site-footer p,
-.local-time-text,
-.chat-header-title,
-.chat-viewer-count,
-.chat-user-node,
-.chat-text-node,
-.news-container h4,
-.news-container p,
-#news-feed-loader {
-    color: #ffffff !important;
-    text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.95), -1px -1px 0px rgba(0,0,0,0.9) !important;
 }
 
 /* --- Compact mobile styling for Adsterra responsive grids --- */
@@ -707,4 +677,44 @@ header .logo {
 
 #chat-send-btn:active {
     transform: scale(0.97);
+}
+
+
+/* --- FORCE INTENSE TEXT READABILITY (SHADOW ONLY) --- */
+.main_container h2,
+.main_container h3, 
+.main_container h4, 
+.main_container span, 
+.main_container p,
+.timings h4, 
+.team h3,
+.site-footer,
+.site-footer p,
+.local-time-text,
+.chat-header-title,
+.chat-viewer-count,
+.chat-user-node,
+.chat-text-node,
+.news-container h4,
+.news-container p,
+#news-feed-loader {
+    text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.95), -1px -1px 0px rgba(0,0,0,0.9) !important;
+}
+
+/* --- FORCE INTENSE TEXT COLOR ONLY ON ELEMENTS THAT SHOULD BE WHITE --- */
+.main_container h2,
+.main_container h3, 
+.main_container h4, 
+.main_container p,
+.timings h4, 
+.team h3,
+.site-footer,
+.site-footer p,
+.chat-header-title,
+.chat-viewer-count,
+.chat-user-node,
+.chat-text-node,
+.news-container h4,
+#news-feed-loader {
+    color: #ffffff !important;
 }
