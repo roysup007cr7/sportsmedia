@@ -321,9 +321,10 @@
             const t2 = teamElements[1]?.textContent || "Team B";
             
             const shareTitle = "Watch Live Stream";
-            const shareText = `Watching ${t1} vs ${t2} live right now in HD here! ⚽👇`;
-            const shareUrl = window.location.origin + window.location.pathname;
-            const fullMessage = `${shareText}\n${shareUrl}`;
+            const shareText = `Watching ${t1} vs ${t2} live right now in HD here! ⚽`;
+            // Hardcoding your live domain so WhatsApp explicitly reads it as clickable
+            const shareUrl = "https://sportsmedia-hazel.vercel.app/";
+            const fullMessage = `${shareText}\n\n${shareUrl}`;
 
             if (navigator.share) {
                 navigator.share({
