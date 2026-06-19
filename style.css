@@ -263,6 +263,25 @@ header .logo {
     border: 1px solid rgba(255, 255, 255, 0.15);
 }
 
+/* IMPROVEMENT 4: COMPACT SOCIAL SHARE BUTTON */
+.share-match-btn {
+    background: rgba(255, 255, 255, 0.12);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    color: #ffffff !important;
+    font-size: 11px !important;
+    font-weight: bold !important;
+    padding: 4px 10px;
+    border-radius: 20px;
+    cursor: pointer;
+    text-shadow: none !important;
+    transition: background 0.2s ease, transform 0.1s ease;
+}
+
+.share-match-btn:hover {
+    background: rgba(255, 255, 255, 0.25);
+    transform: scale(1.05);
+}
+
 /* Teams Presentation Split */
 .teams-display {
     display: flex;

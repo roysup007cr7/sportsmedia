@@ -59,6 +59,7 @@
 
     <h3 class="match_title">MATCHES</h3>
 
+    <!-- REFRESH BUTTON WITH TIGHT FITTING BORDER -->
     <div style="width: 100%; display: flex; justify-content: center; margin: 15px 0 25px 0; clear: both;">
         <button id="refresh-btn" style="background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.3); padding: 12px 28px; border-radius: 30px; color: white; cursor: pointer; font-weight: bold; transition: all 0.3s ease; display: inline-flex; align-items: center; justify-content: center; width: auto; max-width: max-content; box-sizing: border-box; backdrop-filter: blur(5px); -webkit-backdrop-filter: blur(5px);">
             <span id="btn-text">🔄 Refresh Stream Links</span>
@@ -67,20 +68,24 @@
 
     <div class="main">
         
+        <!-- MATCH 1: Czechia vs South Africa -->
         <div class="main_container" data-start="2026-06-18T21:30:00+05:30">
             <div class="match-meta">
                 <span class="league-tag">🏆 FIFA World Cup</span>
-                <span class="status-badge"></span>
+                <div style="display: flex; gap: 6px; align-items: center;">
+                    <button class="share-match-btn">🔗 Share</button>
+                    <span class="status-badge"></span>
+                </div>
             </div>
             <div class="teams-display">
                 <div class="team">
                     <span class="flag">🇨🇿</span>
-                    <h3>Czechia</h3>
+                    <h3 class="team-name">Czechia</h3>
                 </div>
                 <div class="vs">VS</div>
                 <div class="team">
                     <span class="flag">🇿🇦</span>
-                    <h3>South Africa</h3>
+                    <h3 class="team-name">South Africa</h3>
                 </div>
             </div>
             <div class="timings">
@@ -95,20 +100,24 @@
             </div>
         </div>
 
+        <!-- MATCH 2: Switzerland vs Bosnia -->
         <div class="main_container" data-start="2026-06-19T00:30:00+05:30">
             <div class="match-meta">
                 <span class="league-tag">🏆 FIFA World Cup</span>
-                <span class="status-badge"></span>
+                <div style="display: flex; gap: 6px; align-items: center;">
+                    <button class="share-match-btn">🔗 Share</button>
+                    <span class="status-badge"></span>
+                </div>
             </div>
             <div class="teams-display">
                 <div class="team">
                     <span class="flag">🇨🇭</span>
-                    <h3>Switzerland</h3>
+                    <h3 class="team-name">Switzerland</h3>
                 </div>
                 <div class="vs">VS</div>
                 <div class="team">
                     <span class="flag">🇧🇦</span>
-                    <h3>Bosnia</h3>
+                    <h3 class="team-name">Bosnia</h3>
                 </div>
             </div>
             <div class="timings">
@@ -123,25 +132,30 @@
             </div>
         </div>
 
+        <!-- STRATEGIC AD PLACEMENT: Native Banner -->
         <div class="ad-container" style="text-align: center; margin: 20px 0;">
             <script async="async" data-cfasync="false" src="https://formssternlystately.com/00eab0ceea0ea96e1764d988f090a9e4/invoke.js"></script>
             <div id="container-00eab0ceea0ea96e1764d988f090a9e4"></div>
         </div>
 
+        <!-- MATCH 3: Canada vs Qatar -->
         <div class="main_container" data-start="2026-06-19T03:30:00+05:30">
             <div class="match-meta">
                 <span class="league-tag">🏆 FIFA World Cup</span>
-                <span class="status-badge"></span>
+                <div style="display: flex; gap: 6px; align-items: center;">
+                    <button class="share-match-btn">🔗 Share</button>
+                    <span class="status-badge"></span>
+                </div>
             </div>
             <div class="teams-display">
                 <div class="team">
                     <span class="flag">🇨🇦</span>
-                    <h3>Canada</h3>
+                    <h3 class="team-name">Canada</h3>
                 </div>
                 <div class="vs">VS</div>
                 <div class="team">
                     <span class="flag">🇶🇦</span>
-                    <h3>Qatar</h3>
+                    <h3 class="team-name">Qatar</h3>
                 </div>
             </div>
             <div class="timings">
@@ -156,20 +170,24 @@
             </div>
         </div>
 
+        <!-- MATCH 4: Mexico vs South Korea -->
         <div class="main_container" data-start="2026-06-19T06:30:00+05:30">
             <div class="match-meta">
                 <span class="league-tag">🏆 FIFA World Cup</span>
-                <span class="status-badge"></span>
+                <div style="display: flex; gap: 6px; align-items: center;">
+                    <button class="share-match-btn">🔗 Share</button>
+                    <span class="status-badge"></span>
+                </div>
             </div>
             <div class="teams-display">
                 <div class="team">
                     <span class="flag">🇲🇽</span>
-                    <h3>Mexico</h3>
+                    <h3 class="team-name">Mexico</h3>
                 </div>
                 <div class="vs">VS</div>
                 <div class="team">
                     <span class="flag">🇰🇷</span>
-                    <h3>South Korea</h3>
+                    <h3 class="team-name">South Korea</h3>
                 </div>
             </div>
             <div class="timings">
@@ -206,6 +224,7 @@
 
     </div> 
 
+    <!-- FLOATING BACK TO TOP BUTTON -->
     <button id="backToTop" title="Go to top">↑</button>
     
     <footer class="site-footer">
@@ -221,6 +240,7 @@
         </div>
     </footer>
 
+    <!-- DYNAMIC TIME ZONE ENGINE, BADGE STATUS SYSTEM & LIVE PULSING BUTTON COUPLER -->
     <script>
     function updateMatchSignalsAndTimes() {
         const now = new Date();
@@ -244,8 +264,6 @@
                     badge.innerHTML = "🕒 UPCOMING";
                 }
                 card.style.opacity = "1"; 
-                
-                // Clear any leftover live classes if checking backwards
                 servers.forEach(btn => btn.classList.remove('live-server-glow'));
             } 
             else if (now >= matchStartTime && now <= matchEndTime) {
@@ -254,8 +272,6 @@
                     badge.innerHTML = "● LIVE";
                 }
                 card.style.opacity = "1";
-                
-                // OPTIMIZATION 2: Make server buttons pulse aggressively to drive clicks!
                 servers.forEach(btn => btn.classList.add('live-server-glow'));
             } 
             else {
@@ -264,8 +280,6 @@
                     badge.innerHTML = "🏁 FINISHED";
                 }
                 card.style.opacity = "0.6";
-                
-                // Stop glowing once match finishes
                 servers.forEach(btn => btn.classList.remove('live-server-glow'));
             }
 
@@ -297,6 +311,43 @@
         window.scrollTo({ top: 0, behavior: 'smooth' });
     });
 
+    // IMPROVEMENT 4: AUTOMATIC NATIVE/CLIPBOARD SHARE MODULE
+    document.querySelectorAll('.share-match-btn').forEach(btn => {
+        btn.addEventListener('click', function(e) {
+            e.stopPropagation();
+            const container = this.closest('.main_container');
+            const teamElements = container.querySelectorAll('.team-name');
+            const t1 = teamElements[0]?.textContent || "Team A";
+            const t2 = teamElements[1]?.textContent || "Team B";
+            
+            const shareTitle = "Watch Live Stream";
+            const shareText = `Watching ${t1} vs ${t2} live right now in HD here! ⚽👇`;
+            const shareUrl = window.location.origin + window.location.pathname;
+            const fullMessage = `${shareText}\n${shareUrl}`;
+
+            if (navigator.share) {
+                navigator.share({
+                    title: shareTitle,
+                    text: shareText,
+                    url: shareUrl
+                }).catch(err => console.log("Share failed or canceled"));
+            } else {
+                // Clipboard safe copy fallback for desktop systems
+                navigator.clipboard.writeText(fullMessage).then(() => {
+                    const originalText = this.innerHTML;
+                    this.innerHTML = "✅ Copied!";
+                    this.style.background = "#25D366";
+                    setTimeout(() => {
+                        this.innerHTML = originalText;
+                        this.style.background = "rgba(255, 255, 255, 0.15)";
+                    }, 2000);
+                }).catch(() => {
+                    alert("Copy failed, please copy page link manually!");
+                });
+            }
+        });
+    });
+
     document.addEventListener("DOMContentLoaded", () => {
         updateMatchSignalsAndTimes();
         setInterval(updateMatchSignalsAndTimes, 20000); // Dynamic check iteration
@@ -314,6 +365,7 @@
     </script>
     <script defer src="/_vercel/speed-insights/script.js"></script>
 
+    <!-- MONETIZATION COUNTDOWN LOOP REFRESH SCRIPT + INTEGRATED NETWORK CACHE BUSTER -->
     <script>
     document.getElementById('refresh-btn').addEventListener('click', function(e) {
         e.preventDefault();
@@ -335,7 +387,7 @@
                 clearInterval(countdownInterval);
                 btnText.innerHTML = "🔄 Syncing Links...";
                 
-                // CRITICAL FIXED: Force bypass of mobile storage cache with unique timestamp injection
+                // Force bypass of mobile storage cache with unique timestamp injection
                 window.location.href = window.location.origin + window.location.pathname + '?v=' + new Date().getTime();
             } else {
                 btnText.innerHTML = `Checking Servers... (${timeLeft}s)`;
