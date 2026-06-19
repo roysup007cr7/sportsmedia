@@ -59,7 +59,6 @@
 
     <h3 class="match_title">MATCHES</h3>
 
-    <!-- REFRESH BUTTON WITH TIGHT FITTING BORDER -->
     <div style="width: 100%; display: flex; justify-content: center; margin: 15px 0 25px 0; clear: both;">
         <button id="refresh-btn" style="background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.3); padding: 12px 28px; border-radius: 30px; color: white; cursor: pointer; font-weight: bold; transition: all 0.3s ease; display: inline-flex; align-items: center; justify-content: center; width: auto; max-width: max-content; box-sizing: border-box; backdrop-filter: blur(5px); -webkit-backdrop-filter: blur(5px);">
             <span id="btn-text">🔄 Refresh Stream Links</span>
@@ -68,7 +67,6 @@
 
     <div class="main">
         
-        <!-- MATCH 1: Czechia vs South Africa -->
         <div class="main_container" data-start="2026-06-18T21:30:00+05:30">
             <div class="match-meta">
                 <span class="league-tag">🏆 FIFA World Cup</span>
@@ -100,7 +98,6 @@
             </div>
         </div>
 
-        <!-- MATCH 2: Switzerland vs Bosnia -->
         <div class="main_container" data-start="2026-06-19T00:30:00+05:30">
             <div class="match-meta">
                 <span class="league-tag">🏆 FIFA World Cup</span>
@@ -132,13 +129,11 @@
             </div>
         </div>
 
-        <!-- STRATEGIC AD PLACEMENT: Native Banner -->
         <div class="ad-container" style="text-align: center; margin: 20px 0;">
             <script async="async" data-cfasync="false" src="https://formssternlystately.com/00eab0ceea0ea96e1764d988f090a9e4/invoke.js"></script>
             <div id="container-00eab0ceea0ea96e1764d988f090a9e4"></div>
         </div>
 
-        <!-- MATCH 3: Canada vs Qatar -->
         <div class="main_container" data-start="2026-06-19T03:30:00+05:30">
             <div class="match-meta">
                 <span class="league-tag">🏆 FIFA World Cup</span>
@@ -170,7 +165,6 @@
             </div>
         </div>
 
-        <!-- MATCH 4: Mexico vs South Korea -->
         <div class="main_container" data-start="2026-06-19T14:19:00+05:30">
             <div class="match-meta">
                 <span class="league-tag">🏆 FIFA World Cup</span>
@@ -222,9 +216,20 @@
              <script src="https://formssternlystately.com/0da92367a92071637c7a52612740dba0/invoke.js"></script>
         </div>
 
+        <div class="live-chat-box">
+            <div class="chat-header">
+                <div class="chat-status">
+                    <span class="pulse-dot"></span>
+                    <h3 class="chat-header-title">LIVE STREAM CHAT</h3>
+                </div>
+                <span class="chat-viewer-count" id="live-chat-viewers">12,450 online</span>
+            </div>
+            <div class="chat-messages-container" id="chat-messages">
+                </div>
+        </div>
+
     </div> 
 
-    <!-- FLOATING BACK TO TOP BUTTON -->
     <button id="backToTop" title="Go to top">↑</button>
     
     <footer class="site-footer">
@@ -240,7 +245,6 @@
         </div>
     </footer>
 
-    <!-- DYNAMIC TIME ZONE ENGINE, BADGE STATUS SYSTEM & LIVE PULSING BUTTON COUPLER -->
     <script>
     function updateMatchSignalsAndTimes() {
         const now = new Date();
@@ -349,9 +353,84 @@
         });
     });
 
+    // --- AUTOMATED SPORTS CHAT SIMULATOR ENGINE ---
     document.addEventListener("DOMContentLoaded", () => {
         updateMatchSignalsAndTimes();
         setInterval(updateMatchSignalsAndTimes, 20000); // Dynamic check iteration
+
+        const chatContainer = document.getElementById("chat-messages");
+        const viewerCounter = document.getElementById("live-chat-viewers");
+
+        const firstNames = ["Diego", "Alex", "Sam", "Marco", "Leo", "Santi", "Chris", "Kevin", "Ali", "Kim", "John", "Luis", "Mateo", "Lucas", "RonaldoFan", "MessiGoat", "NeymarJR"];
+        const lastNames = ["99", "_FC", "Streamer", "CR7", "LM10", "Gamer", "_HD", "Fan", "Goal", "Rooney", "Silva", "K-Fan", "Ultra", "Winner"];
+        const colors = ["#34c759", "#007aff", "#ff9500", "#af52de", "#ff2d55", "#5ac8fa", "#ffcc00", "#00ffcc", "#ff00ff"];
+
+        const messagesPool = [
+            "GOALLLL!!! WHAT A CRACKER!!! 🔥🚀",
+            "Ref is absolutely blind omg 🤦‍♂️❌",
+            "Is link 2 working in 1080p for anyone else?",
+            "Yeah link 2 is perfect HD crisp frame rate",
+            "What a save! Keeper is a beast today 🧤⚡",
+            "This match is insane 😱🍿",
+            "Stream is running so smooth here, thanks admin!",
+            "VAMOSSSS!!! ⚽⚽⚽",
+            "Yellow card?? Never a foul bro 😂",
+            "Who got the assist on that?",
+            "Offside all day long smh",
+            "Checking in from Mexico! Let's goooo 🇲🇽",
+            "South Korea fighting! 🇰🇷💪",
+            "Wow what a tactical match, beautiful football",
+            "My internet lagged but the backup link instantly fixed it 🙌",
+            "Clear penalty! Come on VAR check it!",
+            "This game is definitely ending in a draw 🤝",
+            "That miss was criminal how did he drop that 😭",
+            "Insane skills, what a run!",
+            "Link 1 buffering a bit, switched to Server 2 and its perfect!"
+        ];
+
+        function generateMessage() {
+            if (!chatContainer) return;
+
+            const name = firstNames[Math.floor(Math.random() * firstNames.length)] + lastNames[Math.floor(Math.random() * lastNames.length)];
+            const color = colors[Math.floor(Math.random() * colors.length)];
+            const text = messagesPool[Math.floor(Math.random() * messagesPool.length)];
+
+            const msgDiv = document.createElement("div");
+            msgDiv.className = "chat-msg";
+
+            const userSpan = document.createElement("span");
+            userSpan.className = "chat-user-node";
+            userSpan.style.color = color;
+            userSpan.textContent = name + ":";
+
+            const textSpan = document.createElement("span");
+            textSpan.className = "chat-text-node";
+            textSpan.textContent = " " + text;
+
+            msgDiv.appendChild(userSpan);
+            msgDiv.appendChild(textSpan);
+            chatContainer.appendChild(msgDiv);
+
+            chatContainer.scrollTop = chatContainer.scrollHeight;
+
+            if (chatContainer.children.length > 30) {
+                chatContainer.removeChild(chatContainer.firstChild);
+            }
+
+            if (Math.random() > 0.7 && viewerCounter) {
+                const currentCount = parseInt(viewerCounter.textContent.replace(/,/g, ''));
+                const variance = Math.floor(Math.random() * 30) - 13; 
+                viewerCounter.textContent = (currentCount + variance).toLocaleString() + " online";
+            }
+
+            const nextInterval = Math.floor(Math.random() * 1800) + 500;
+            setTimeout(generateMessage, nextInterval);
+        }
+
+        for(let i = 0; i < 5; i++) {
+            setTimeout(generateMessage, i * 200);
+        }
+        setTimeout(generateMessage, 1200);
     });
     </script>
 
@@ -366,7 +445,6 @@
     </script>
     <script defer src="/_vercel/speed-insights/script.js"></script>
 
-    <!-- MONETIZATION COUNTDOWN LOOP REFRESH SCRIPT + INTEGRATED NETWORK CACHE BUSTER -->
     <script>
     document.getElementById('refresh-btn').addEventListener('click', function(e) {
         e.preventDefault();
