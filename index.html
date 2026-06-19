@@ -5,9 +5,66 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sports Media Live</title>
     <link rel="stylesheet" href="style.css">
+    
+    <style>
+        .news-container {
+            max-width: 95%;
+            width: 1000px;
+            margin: 0 auto 30px auto;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 18px;
+            padding: 20px;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            box-sizing: border-box;
+        }
+        .news-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 15px;
+        }
+        .news-card {
+            background: rgba(0, 0, 0, 0.4);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            padding: 15px;
+            transition: transform 0.2s ease, border-color 0.2s ease;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        .news-card:hover {
+            transform: translateY(-3px);
+            border-color: #00ffcc;
+        }
+        .news-card h4 {
+            margin: 0 0 10px 0;
+            font-size: 15px;
+            color: #fff;
+            line-height: 1.4;
+        }
+        .news-card p {
+            font-size: 12px;
+            color: rgba(255, 255, 255, 0.6);
+            margin: 0 0 15px 0;
+            line-height: 1.5;
+        }
+        .news-link {
+            color: #00ffcc;
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: bold;
+            align-self: flex-start;
+        }
+        /* Status Badge Fallbacks if missing in style.css */
+        .live-blink { color: #ff2d55; font-weight: bold; }
+        .upcoming-badge { color: #ffcc00; }
+        .finished-badge { color: rgba(255,255,255,0.4); }
+        .live-server-glow { box-shadow: 0 0 10px #00ffcc; }
+    </style>
 </head>
 <body>
-
     <div class="ad-container" style="text-align: center; margin: 10px 0;">
         <script>
             atOptions = {
@@ -22,44 +79,42 @@
     </div>
 
     <header>
-        <div class="notification-banner">
-            <p>📢 Never miss an equalizer! Get instant push notifications right when the big matches kick off.</p>
-            <div class="social-channels-grid">
-                <a href="https://chat.whatsapp.com/DYqeiR11qha8byg0TB3jix" target="_blank" class="social-btn whatsapp-btn">
-                    💬 Join WhatsApp Channel
+        <div style="width: 500px; max-width: 95%; margin: 20px auto; background: rgba(255, 255, 255, 0.1); border: 1px solid rgba(255, 255, 255, 0.2); border-radius: 18px; padding: 20px; text-align: center; backdrop-filter: blur(10px); position: relative; z-index: 9999;">
+            <p style="font-size: 14px; margin-bottom: 15px; color: #fff;">📢 Never miss an equalizer! Get instant push notifications right when the big matches kick off.</p>
+            <div style="display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; position: relative; z-index: 10000;">
+                <a href="https://chat.whatsapp.com/DYqeiR11qha8byg0TB3jix" target="_blank" style="text-decoration: none; padding: 12px 20px; font-size: 14px; font-weight: bold; border-radius: 30px; color: white; display: inline-flex; align-items: center; gap: 8px; background: #25D366; cursor: pointer;">
+                     💬 Join WhatsApp Channel
                 </a>
-                <a href="https://t.me/+dOxW3gPhETo2ZGJl" target="_blank" class="social-btn telegram-btn">
+                <a href="https://t.me/+dOxW3gPhETo2ZGJl" target="_blank" style="text-decoration: none; padding: 12px 20px; font-size: 14px; font-weight: bold; border-radius: 30px; color: white; display: inline-flex; align-items: center; gap: 8px; background: #0088cc; cursor: pointer;">
                     ✈️ Join Telegram Channel
                 </a>
             </div>
         </div>
         <img class="logo" src="wall3.png" alt="Sports Media Live Logo">
-        <p class="tagline">Leading sports streaming website</p>
+        <p>Leading sports streaming website</p>
     </header>
 
     <h3 class="match_title">LATEST BREAKING NEWS</h3>
     <div class="news-container">
-        <div id="news-feed-loader">
-            <div class="spinner"></div>
-            <span>Connecting to live media updates...</span>
+        <div id="news-feed-loader" style="text-align:center; color:rgba(255,255,255,0.6); padding:10px; font-size: 14px;">
+            ⏳ Connecting to live media updates...
         </div>
         <div id="news-grid" class="news-grid"></div>
     </div>
 
     <h3 class="match_title">MATCHES</h3>
 
-    <div class="sync-wrapper">
-        <button id="refresh-btn">
+    <div style="width: 100%; display: flex; justify-content: center; margin: 15px 0 25px 0; clear: both;">
+        <button id="refresh-btn" style="background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.3); padding: 12px 28px; border-radius: 30px; color: white; cursor: pointer; font-weight: bold; transition: all 0.3s ease; display: inline-flex; align-items: center; justify-content: center; width: auto; max-width: max-content; box-sizing: border-box; backdrop-filter: blur(5px); -webkit-backdrop-filter: blur(5px);">
             <span id="btn-text">🔄 Refresh Stream Links</span>
         </button>
     </div>
 
     <div class="main">
-        
         <div class="main_container" data-start="2026-06-18T21:30:00+05:30">
             <div class="match-meta">
                 <span class="league-tag">🏆 FIFA World Cup</span>
-                <div class="meta-controls">
+                <div style="display: flex; gap: 6px; align-items: center;">
                     <button class="share-match-btn">🔗 Share</button>
                     <span class="status-badge"></span>
                 </div>
@@ -90,7 +145,7 @@
         <div class="main_container" data-start="2026-06-19T00:30:00+05:30">
             <div class="match-meta">
                 <span class="league-tag">🏆 FIFA World Cup</span>
-                <div class="meta-controls">
+                <div style="display: flex; gap: 6px; align-items: center;">
                     <button class="share-match-btn">🔗 Share</button>
                     <span class="status-badge"></span>
                 </div>
@@ -134,7 +189,7 @@
         <div class="main_container" data-start="2026-06-19T03:30:00+05:30">
             <div class="match-meta">
                 <span class="league-tag">🏆 FIFA World Cup</span>
-                <div class="meta-controls">
+                <div style="display: flex; gap: 6px; align-items: center;">
                     <button class="share-match-btn">🔗 Share</button>
                     <span class="status-badge"></span>
                 </div>
@@ -165,7 +220,7 @@
         <div class="main_container" data-start="2026-06-19T16:19:00+05:30">
             <div class="match-meta">
                 <span class="league-tag">🏆 FIFA World Cup</span>
-                <div class="meta-controls">
+                <div style="display: flex; gap: 6px; align-items: center;">
                     <button class="share-match-btn">🔗 Share</button>
                     <span class="status-badge"></span>
                 </div>
@@ -220,7 +275,7 @@
     
     <footer class="site-footer">
         <p>&copy; 2026 SPORTS MEDIA.in. All rights reserved.</p>
-        <p class="credits-subtext">
+        <p style="font-size: 13px; color: rgba(255, 255, 255, 0.4); margin-bottom: 10px;">
             Owned & Operated by <strong>Supriyo Roy</strong> (Sports Media Group) since 2022.
             Designed by <strong>Supriyo Roy</strong> & Website maker <strong>Arajit Debnath</strong> (professional CS coder)
         </p>
@@ -230,6 +285,278 @@
             <a href="privacy.html">Privacy Policy</a>
         </div>
     </footer>
+
+    <script>
+    // AUTOMATED REAL SPORTS NEWS FETCH ENGINE
+    async function fetchRealSportsNews() {
+        const newsGrid = document.getElementById('news-grid');
+        const loader = document.getElementById('news-feed-loader');
+        if(!newsGrid || !loader) return;
+
+        const rssUrl = encodeURIComponent('https://www.skysports.com/rss/12040');
+        const apiUrl = `https://api.rss2json.com/v1/api.json?rss_url=${rssUrl}`;
+
+        try {
+            const response = await fetch(apiUrl);
+            const data = await response.json();
+
+            if (data.status === 'ok' && data.items && data.items.length > 0) {
+                loader.style.display = 'none';
+                newsGrid.innerHTML = ''; 
+                
+                const articles = data.items.slice(0, 3); 
+                
+                articles.forEach(item => {
+                    const card = document.createElement('div');
+                    card.className = 'news-card';
+                    
+                    let itemDesc = item.description || "Click read more below to access full breaking analytical breakdowns.";
+                    const cleanDesc = itemDesc.replace(/<[^>]*>/g, '').substring(0, 95) + '...';
+
+                    card.innerHTML = `
+                        <div>
+                            <h4>${item.title}</h4>
+                            <p>${cleanDesc}</p>
+                        </div>
+                        <a href="${item.link}" target="_blank" class="news-link">Read Full Story →</a>
+                    `;
+                    newsGrid.appendChild(card);
+                });
+            } else {
+                loader.innerHTML = "🏁 Standby for updated tournament insights.";
+            }
+        } catch (error) {
+            console.error("News load error:", error);
+            loader.innerHTML = "⚽ Live scoreboard data streaming normal.";
+        }
+    }
+
+    function updateMatchSignalsAndTimes() {
+        const now = new Date();
+        const matches = document.querySelectorAll('.main_container[data-start]');
+        
+        matches.forEach(card => {
+            const startTimeString = card.getAttribute('data-start');
+            if (!startTimeString) return;
+
+            const matchStartTime = new Date(startTimeString);
+            const matchEndTime = new Date(matchStartTime.getTime() + (2 * 60 * 60 * 1000)); 
+            
+            const badge = card.querySelector('.status-badge');
+            const timeDisplay = card.querySelector('.match-time-display');
+            const servers = card.querySelectorAll('.server-btn');
+            
+            if (now < matchStartTime) {
+                if (badge) {
+                    badge.className = "status-badge upcoming-badge";
+                    badge.innerHTML = "🕒 UPCOMING";
+                }
+                card.style.opacity = "1"; 
+                servers.forEach(btn => btn.classList.remove('live-server-glow'));
+            } 
+            else if (now >= matchStartTime && now <= matchEndTime) {
+                if (badge) {
+                    badge.className = "status-badge live-blink";
+                    badge.innerHTML = "● LIVE";
+                }
+                card.style.opacity = "1";
+                servers.forEach(btn => btn.classList.add('live-server-glow'));
+            } 
+            else {
+                if (badge) {
+                    badge.className = "status-badge finished-badge";
+                    badge.innerHTML = "🏁 FINISHED";
+                }
+                card.style.opacity = "0.6";
+                servers.forEach(btn => btn.classList.remove('live-server-glow'));
+            }
+
+            const localTimeOptions = { hour: '2-digit', minute: '2-digit', hour12: true };
+            const localTimeStr = matchStartTime.toLocaleTimeString([], localTimeOptions);
+            const localDateStr = matchStartTime.toLocaleDateString([], { month: 'short', day: 'numeric' });
+            const userTimezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
+
+            if (timeDisplay) {
+                timeDisplay.innerHTML = `
+                    <div class="local-time-text">📅 ${localDateStr} &nbsp;|&nbsp; ⏰ ${localTimeStr}</div>
+                    <small class="timezone-subtext">Device Timezone: ${userTimezone}</small>
+                `;
+            }
+        });
+    }
+
+    // FLOATING BACK TO TOP SCRIPT CONTROLLER
+    const bttButton = document.getElementById("backToTop");
+    window.onscroll = function() {
+        if (bttButton) {
+            if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
+                bttButton.classList.add("visible");
+            } else {
+                bttButton.classList.remove("visible");
+            }
+        }
+    };
+    if (bttButton) {
+        bttButton.addEventListener("click", function() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+    }
+
+    // AUTOMATED NATIVE/CLIPBOARD SHARE MODULE
+    document.querySelectorAll('.share-match-btn').forEach(btn => {
+        btn.addEventListener('click', function(e) {
+            e.stopPropagation();
+            const container = this.closest('.main_container');
+            const teamElements = container.querySelectorAll('.team-name');
+            const t1 = teamElements[0]?.textContent || "Team A";
+            const t2 = teamElements[1]?.textContent || "Team B";
+            
+            const shareTitle = "Watch Live Stream";
+            const shareText = `Watching ${t1} vs ${t2} live right now in HD here! ⚽`;
+            const shareUrl = window.location.href;
+            const fullMessage = `${shareText}\n\n${shareUrl}`;
+
+            if (navigator.share) {
+                navigator.share({
+                    title: shareTitle,
+                    text: shareText,
+                    url: shareUrl
+                }).catch(err => console.log("Share failed or canceled"));
+            } else {
+                navigator.clipboard.writeText(fullMessage).then(() => {
+                    const originalText = this.innerHTML;
+                    this.innerHTML = "✅ Copied!";
+                    this.style.background = "#25D366";
+                    setTimeout(() => {
+                        this.innerHTML = originalText;
+                        this.style.background = "rgba(255, 255, 255, 0.15)";
+                    }, 2000);
+                }).catch(() => {
+                    alert("Copy failed, please copy page link manually!");
+                });
+            }
+        });
+    });
+
+    // AUTOMATED SPORTS CHAT SIMULATOR ENGINE
+    document.addEventListener("DOMContentLoaded", () => {
+        updateMatchSignalsAndTimes();
+        fetchRealSportsNews(); 
+        setInterval(updateMatchSignalsAndTimes, 20000); 
+        setInterval(fetchRealSportsNews, 180000); 
+
+        const chatContainer = document.getElementById("chat-messages");
+        const viewerCounter = document.getElementById("live-chat-viewers");
+
+        const firstNames = ["Diego", "Alex", "Sam", "Marco", "Leo", "Santi", "Chris", "Kevin", "Ali", "Kim", "John", "Luis", "Mateo", "Lucas", "RonaldoFan", "MessiGoat", "NeymarJR"];
+        const lastNames = ["99", "_FC", "Streamer", "CR7", "LM10", "Gamer", "_HD", "Fan", "Goal", "Rooney", "Silva", "K-Fan", "Ultra", "Winner"];
+        const colors = ["#34c759", "#007aff", "#ff9500", "#af52de", "#ff2d55", "#5ac8fa", "#ffcc00", "#00ffcc", "#ff00ff"];
+
+        const messagesPool = [
+            "GOALLLL!!! WHAT A CRACKER!!! 🔥🚀",
+            "Ref is absolutely blind omg 🤦‍♂️❌",
+            "Is link 2 working in 1080p for anyone else?",
+            "Yeah link 2 is perfect HD crisp frame rate",
+            "What a save! Keeper is a beast today 🧤⚡",
+            "This match is insane 😱🍿",
+            "Stream is running so smooth here, thanks admin!",
+            "VAMOSSSS!!! ⚽⚽⚽",
+            "Yellow card?? Never a foul bro 😂",
+            "Who got the assist on that?",
+            "Offside all day long smh",
+            "Checking in from Mexico! Let's goooo 🇲🇽",
+            "South Korea fighting! 🇰🇷💪",
+            "Wow what a tactical match, beautiful football",
+            "My internet lagged but the backup link instantly fixed it 🙌",
+            "Clear penalty! Come on VAR check it!",
+            "This game is definitely ending in a draw 🤝",
+            "That miss was criminal how did he drop that 😭",
+            "Insane skills, what a run!",
+            "Link 1 buffering a bit, switched to Server 2 and its perfect!"
+        ];
+
+        function generateMessage() {
+            if (!chatContainer) return;
+
+            const name = firstNames[Math.floor(Math.random() * firstNames.length)] + lastNames[Math.floor(Math.random() * lastNames.length)];
+            const color = colors[Math.floor(Math.random() * colors.length)];
+            const text = messagesPool[Math.floor(Math.random() * messagesPool.length)];
+
+            const msgDiv = document.createElement("div");
+            msgDiv.className = "chat-msg";
+
+            const userSpan = document.createElement("span");
+            userSpan.className = "chat-user-node";
+            userSpan.style.color = color;
+            userSpan.textContent = name + ":";
+
+            const textSpan = document.createElement("span");
+            textSpan.className = "chat-text-node";
+            textSpan.textContent = " " + text;
+
+            msgDiv.appendChild(userSpan);
+            msgDiv.appendChild(textSpan);
+            chatContainer.appendChild(msgDiv);
+
+            chatContainer.scrollTop = chatContainer.scrollHeight;
+
+            if (chatContainer.children.length > 30) {
+                chatContainer.removeChild(chatContainer.firstChild);
+            }
+
+            if (Math.random() > 0.7 && viewerCounter) {
+                const currentCount = parseInt(viewerCounter.textContent.replace(/,/g, ''));
+                const variance = Math.floor(Math.random() * 30) - 13; 
+                viewerCounter.textContent = (currentCount + variance).toLocaleString() + " online";
+            }
+
+            const nextInterval = Math.floor(Math.random() * 1800) + 500;
+            setTimeout(generateMessage, nextInterval);
+        }
+
+        for(let i = 0; i < 5; i++) {
+            setTimeout(generateMessage, i * 200);
+        }
+        setTimeout(generateMessage, 1200);
+
+        const userInput = document.getElementById("chat-user-input");
+        const sendBtn = document.getElementById("chat-send-btn");
+
+        function handleUserMessageSubmit() {
+            if (!userInput || !chatContainer) return;
+            const text = userInput.value.trim();
+            if (text === "") return;
+
+            const msgDiv = document.createElement("div");
+            msgDiv.className = "chat-msg";
+
+            const userSpan = document.createElement("span");
+            userSpan.className = "chat-user-node";
+            userSpan.style.color = "#00ffcc"; 
+            userSpan.textContent = "You:";
+
+            const textSpan = document.createElement("span");
+            textSpan.className = "chat-text-node";
+            textSpan.textContent = " " + text;
+
+            msgDiv.appendChild(userSpan);
+            msgDiv.appendChild(textSpan);
+            chatContainer.appendChild(msgDiv);
+
+            chatContainer.scrollTop = chatContainer.scrollHeight;
+            userInput.value = "";
+        }
+
+        if (sendBtn && userInput) {
+            sendBtn.addEventListener("click", handleUserMessageSubmit);
+            userInput.addEventListener("keypress", (e) => {
+                if (e.key === "Enter") {
+                    handleUserMessageSubmit();
+                }
+            });
+        }
+    });
+    </script>
 
     <script src="https://formssternlystately.com/8c/66/83/8c66837016984dc8652552dcd427cb5b.js"></script>
 
@@ -242,6 +569,32 @@
     </script>
     <script defer src="/_vercel/speed-insights/script.js"></script>
 
-    <script src="app.js"></script>
+    <script>
+    document.getElementById('refresh-btn').addEventListener('click', function(e) {
+        e.preventDefault();
+        
+        let button = this;
+        let btnText = document.getElementById('btn-text');
+        let timeLeft = 5;
+        
+        button.disabled = true;
+        button.style.opacity = "0.7";
+        button.style.cursor = "not-allowed";
+        button.style.background = "linear-gradient(135deg, #555, #333)";
+
+        btnText.innerHTML = `Checking Servers... (${timeLeft}s)`;
+
+        let countdownInterval = setInterval(function() {
+            timeLeft--;
+            if (timeLeft <= 0) {
+                clearInterval(countdownInterval);
+                btnText.innerHTML = "🔄 Syncing Links...";
+                window.location.href = window.location.origin + window.location.pathname + '?v=' + new Date().getTime();
+            } else {
+                btnText.innerHTML = `Checking Servers... (${timeLeft}s)`;
+            }
+        }, 1000);
+    });
+    </script>
 </body>
 </html>
