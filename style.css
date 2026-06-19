@@ -246,6 +246,7 @@ header .logo {
 }
 
 /* --- Mobile Responsive Adjustments (Max Width: 600px) --- */
+/* --- Mobile Responsive Adjustments (Max Width: 600px) --- */
 @media (max-width: 600px) {
     header .logo {
         width: 300px;
@@ -279,6 +280,25 @@ header .logo {
     .server-container {
         flex-direction: column !important;
         gap: 8px !important;
+    }
+
+    /* FIXES MOBILE FOOTER LINKS WRAPPING & OVERLAPPING */
+    .footer-links {
+        display: flex !important;
+        flex-wrap: wrap !important;
+        justify-content: center !important;
+        gap: 10px 16px !important;
+        padding: 0 10px !important;
+    }
+
+    .footer-links a {
+        display: inline-block !important;
+        white-space: nowrap !important; /* Stops individual links from breaking mid-word */
+        font-size: 13px !important;
+    }
+
+    .footer-links span {
+        display: none !important; /* Hides the vertical line "|" separators so they don't float around on mobile */
     }
 }
 
