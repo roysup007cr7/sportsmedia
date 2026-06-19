@@ -5,14 +5,14 @@
     padding: 0;
     margin: 0;
     box-sizing: border-box;
-    font-family: Outfit;
+    font-family: Outfit, sans-serif;
 }
 
 body {
     background-image: url(wall4.jpg);
     background-size: cover;
     background-position: center;
-    background-attachment: fixed; /* Keeps background smooth while scrolling */
+    background-attachment: fixed;
     min-height: 100vh;
     width: 100%;
     margin: 0 auto;
@@ -38,27 +38,24 @@ header p {
     color: #fff;
 }
 
-/* --- Desktop Logo Adjustments --- */
 header .logo {
-    width: 450px;         /* Adjust this width to make it larger/smaller on desktop */
-    height: auto;         /* Keeps the aspect ratio perfect so it doesn't stretch */
-    margin-bottom: 15px;  /* Spacing between the logo and the text below it */
-    object-fit: contain;  /* Ensures the image fits cleanly within its box */
+    width: 450px;
+    height: auto;
+    margin-bottom: 15px;
+    object-fit: contain;
 }
 
-/* --- Main Container Wrapper (FIXED: Becomes a spacing tool for separate cards) --- */
+/* --- Main Container Wrapper --- */
 .main {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 20px; /* This sets the perfect background gap space between each match box */
+    gap: 20px;
     width: 500px;
     max-width: 95%; 
     min-height: 600px;
     padding: 20px 12px;
     margin: 0 auto 40px auto;
-    
-    /* Transparent container space so the wallpaper shows between cards */
     background: transparent !important; 
     backdrop-filter: none !important;
     -webkit-backdrop-filter: none !important;
@@ -76,20 +73,18 @@ header .logo {
     text-align: center;
 }
 
-/* --- Individual Match Cards (FIXED: Separate boxes with solid dark background) --- */
+/* --- Individual Match Cards --- */
 .main_container {
     user-select: none;
-    /* Solid high-intensity dark color background for each card box */
     background: #121214 !important; 
     backdrop-filter: none !important; 
     -webkit-backdrop-filter: none !important;
-    
     display: flex;
     width: 100%;
     max-width: 450px;
     flex-direction: column;
     align-items: center;
-    border-radius: 16px; /* Clean rounded card look */
+    border-radius: 16px;
     border: 1px solid rgba(255, 255, 255, 0.15) !important; 
     padding: 20px;
     color: #ffffff !important;
@@ -111,6 +106,21 @@ header .logo {
 .timings {
     font-size: 18px;
     font-weight: 300;
+    width: 100%;
+    text-align: center;
+}
+
+.local-time-text {
+    color: #ff9900 !important;
+    font-size: 15px;
+    margin-top: 4px;
+}
+
+.timezone-subtext {
+    color: rgba(255, 255, 255, 0.35) !important;
+    font-size: 11px;
+    display: block;
+    margin-top: 2px;
 }
 
 /* --- Original Button Layout Setup --- */
@@ -118,30 +128,15 @@ header .logo {
     display: flex;
     gap: 10px;
     margin-top: 10px;
-}
-
-.links button {
-    cursor: pointer;
-    width: 130px;
-    padding: 10px;
-    font-size: 16px;
-    border-radius: 15px;
-    border: none;
-    background: #fff;
-    font-weight: bold;
-    transition: background 0.2s, box-shadow 0.2s;
-}
-
-.links button:hover {
-    box-shadow: 0 4px 10px rgba(255,255,255,0.3);
-    background: #e0e0e0;
+    width: 100%;
 }
 
 .links a {
     text-decoration: none;
+    flex: 1;
 }
 
-/* --- Adsterra Layout & Prominent Destination Button Styles --- */
+/* --- Adsterra Layout Containers --- */
 .ad-container {
     display: flex;
     justify-content: center;
@@ -151,43 +146,11 @@ header .logo {
     overflow: hidden;
 }
 
-.content-area {
-    text-align: center;
-    width: 100%;
-    padding: 10px 0;
-}
-
-.match-btn {
-    display: block;
-    width: 90%;
-    max-width: 350px;
-    margin: 15px auto;
-    padding: 16px;
-    background-color: #1a73e8; 
-    color: white !important;
-    text-align: center;
-    text-decoration: none;
-    font-size: 18px;
-    font-weight: bold;
-    border-radius: 12px;
-    box-shadow: 0 4px 15px rgba(26, 115, 232, 0.4);
-    transition: background-color 0.2s, transform 0.1s;
-}
-
-.match-btn:hover {
-    background-color: #1557b0;
-    transform: translateY(-1px);
-}
-
-.match-btn:active {
-    transform: translateY(1px);
-}
-
 /* --- Mobile Responsive Adjustments (Max Width: 600px) --- */
 @media (max-width: 600px) {
     header .logo {
         width: 300px;
-        height: 80px;
+        height: auto;
     }
 
     header p {
@@ -202,10 +165,6 @@ header .logo {
         gap: 15px;
     }
 
-    .main h1 {
-        font-size: 22px;
-    }
-
     .match_title {
         font-size: 24px;
         padding: 0 5px;
@@ -215,6 +174,11 @@ header .logo {
         width: 100%;
         padding: 15px 12px;
         border-radius: 14px;
+    }
+    
+    .server-container {
+        flex-direction: column !important;
+        gap: 8px !important;
     }
 }
 
@@ -256,30 +220,6 @@ header .logo {
     text-decoration: underline;
 }
 
-.footer-links span {
-    color: rgba(255, 255, 255, 0.6) !important;
-}
-
-/* --- Global Refresh Button Styling --- */
-.refresh-btn {
-    background: rgba(255, 255, 255, 0.2);
-    border: 1px solid rgba(255, 255, 255, 0.4);
-    color: white;
-    padding: 10px 20px;
-    font-size: 15px;
-    font-weight: bold;
-    border-radius: 30px;
-    cursor: pointer;
-    backdrop-filter: blur(5px);
-    transition: all 0.3s ease;
-}
-
-.refresh-btn:hover {
-    background: #1a73e8;
-    border-color: #1a73e8;
-    box-shadow: 0 4px 15px rgba(26, 115, 232, 0.4);
-}
-
 /* --- Premium Match Card Substructure --- */
 .match-meta {
     display: flex;
@@ -315,6 +255,12 @@ header .logo {
     background: rgba(255, 255, 255, 0.1);
     color: #ebebf5;
     border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.finished-badge {
+    background: rgba(255, 255, 255, 0.08);
+    color: rgba(255, 255, 255, 0.4);
+    border: 1px solid rgba(255, 255, 255, 0.15);
 }
 
 /* Teams Presentation Split */
@@ -353,17 +299,6 @@ header .logo {
     border-radius: 50%;
 }
 
-/* Center timings divider adjustments */
-.timings p {
-    margin-bottom: 2px;
-}
-.timings h4 {
-    text-align: center;
-    font-weight: 400;
-    font-size: 14px;
-    color: rgba(255, 255, 255, 0.9);
-}
-
 /* Live Badge Glow Keyframes */
 @keyframes liveBlinkAnimation {
     0% { opacity: 1; }
@@ -371,34 +306,26 @@ header .logo {
     100% { opacity: 1; }
 }
 
-/* Styling for matches that have concluded */
-.finished-badge {
-    background: rgba(255, 255, 255, 0.08);
-    color: rgba(255, 255, 255, 0.4);
-    border: 1px solid rgba(255, 255, 255, 0.15);
-}
-
-/* Keeps Server 1 and Server 2 horizontal and spaced out */
+/* Keeps Server Rows Configured Cleanly */
 .server-container {
     display: flex;
-    gap: 12px;
+    gap: 8px;
     justify-content: center;
     width: 100%;
     margin-top: 10px;
+    flex-wrap: wrap;
 }
 
 /* Base button styling matching your dark theme */
 .server-btn {
     flex: 1;
-    padding: 12px 20px;
+    min-width: 100px;
+    padding: 12px 14px;
     text-align: center;
     text-decoration: none;
-    font-size: 15px;
-    font-weight: 900 !important; 
-    color: #ffffff !important;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.9) !important; 
-    border: 1px solid rgba(255, 255, 255, 0.35) !important;
+    font-size: 14px;
     border-radius: 8px;
+    transition: transform 0.2s, box-shadow 0.2s;
 }
 
 /* Server 1 - Sleek Crimson Red */
@@ -413,9 +340,14 @@ header .logo {
     box-shadow: 0 4px 15px rgba(59, 130, 246, 0.4);
 }
 
+/* Server 3 - Backup Profit Smartlink */
+.btn-3 {
+    background: linear-gradient(135deg, #ff9900, #ff5500) !important;
+    box-shadow: 0 4px 15px rgba(255, 153, 0, 0.4);
+}
+
 .server-btn:hover {
     transform: translateY(-2px);
-    opacity: 1 !important;
     box-shadow: 0 6px 20px rgba(255, 255, 255, 0.25);
 }
 
@@ -428,12 +360,14 @@ header .logo {
 .timings h4, 
 .team h3,
 .site-footer,
-.site-footer p {
+.site-footer p,
+.local-time-text {
     color: #ffffff !important;
     font-weight: 700 !important; 
     text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.95), -1px -1px 0px rgba(0,0,0,0.9) !important;
 }
-/* Compact styling exclusively for mobile screens */
+
+/* --- Compact mobile styling for Adsterra responsive grids --- */
 @media screen and (max-width: 768px) {
     .ad-container {
         max-width: 90% !important;
@@ -441,7 +375,6 @@ header .logo {
         overflow: hidden;
     }
     
-    /* Forces the native ad block iframe to shrink cleanly */
     .ad-container iframe {
         max-width: 100% !important;
         transform: scale(0.95);
