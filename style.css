@@ -303,18 +303,62 @@ header .logo {
 }
 
 /* --- Professional Site Footer --- */
+/* --- Professional Two-Tone Footer --- */
 .site-footer {
     width: 100%;
-    background: #121214; 
+    margin-top: 50px;
     border-top: 1px solid rgba(255, 255, 255, 0.15);
-    padding: 25px 15px;
     text-align: center;
     font-size: 14px;
-    margin-top: 50px;
 }
 
-.site-footer p {
+/* Upper block matching your first image layout color */
+.footer-top-container {
+    background: #1a1e22; /* Lighter sleek gray tint for the About Us content */
+    padding: 35px 20px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.about-us-section {
+    max-width: 600px; /* Widens text grid horizontally for PC users */
+    text-align: left;
+    margin: 0 auto;
+}
+
+.about-us-section h3 {
+    font-size: 16px;
+    font-weight: 800;
+    color: #ffffff;
+    letter-spacing: 0.8px;
+    margin-bottom: 6px;
+}
+
+.about-us-section .red-line {
+    width: 45px;
+    height: 3px;
+    background-color: #ff3b30;
+    margin-bottom: 15px;
+}
+
+.about-us-section p {
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.75) !important;
+    line-height: 1.6;
+}
+
+/* Lower block with the dark theme finish */
+.footer-bottom-container {
+    background: #0d0e10; /* Pitch black section exactly like Screenshot (579).jpg */
+    padding: 25px 15px;
+    width: 100%;
+}
+
+.footer-bottom-container p {
     margin-bottom: 10px;
+    color: rgba(255, 255, 255, 0.6) !important;
+    font-size: 13px;
 }
 
 .footer-links {
@@ -322,19 +366,52 @@ header .logo {
     justify-content: center;
     align-items: center;
     gap: 12px;
+    margin-top: 15px;
 }
 
 .footer-links a {
     color: #3b82f6 !important; 
     text-decoration: none;
     font-weight: bold;
-    text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
     transition: color 0.2s ease;
 }
 
 .footer-links a:hover {
     color: #60a5fa !important;
     text-decoration: underline;
+}
+
+/* --- Responsive Adjustments inside the Mobile Media Query Block --- */
+@media (max-width: 600px) {
+    .footer-top-container {
+        padding: 25px 15px;
+    }
+    
+    .about-us-section {
+        width: 100%;
+        text-align: center; /* Centers title beautifully on mobile devices */
+    }
+
+    .about-us-section .red-line {
+        margin: 0 auto 15px auto; /* Centers the accent bar for smaller screens */
+    }
+
+    .footer-links {
+        display: flex !important;
+        flex-wrap: wrap !important;
+        justify-content: center !important;
+        gap: 10px 16px !important;
+    }
+
+    .footer-links a {
+        display: inline-block !important;
+        white-space: nowrap !important;
+        font-size: 13px !important;
+    }
+
+    .footer-links span {
+        display: none !important; /* Drops "|" on mobile so links form a grid */
+    }
 }
 
 /* --- Premium Match Card Substructure --- */
@@ -737,43 +814,4 @@ header .logo {
 .news-container h4,
 #news-feed-loader {
     color: #ffffff !important;
-}
-/* --- About Us Section Styling --- */
-.about-us-section {
-    max-width: 450px;
-    margin: 0 auto 25px auto; /* Centers it nicely over the copyright info */
-    text-align: left; /* Aligns left to match image_a2c5c7.jpg */
-    padding: 0 10px;
-}
-
-.about-us-section h3 {
-    font-size: 16px;
-    font-weight: 800;
-    color: #ffffff;
-    letter-spacing: 0.5px;
-    margin-bottom: 6px;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
-}
-
-.about-us-section .red-line {
-    width: 50px;
-    height: 3px;
-    background-color: #ff3b30; /* Your platform theme accented red */
-    margin-bottom: 15px;
-}
-
-.about-us-section p {
-    font-size: 14px;
-    color: rgba(255, 255, 255, 0.7) !important; /* Slightly muted text color for sleek look */
-    line-height: 1.6;
-    font-weight: 400;
-    text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.95) !important;
-}
-
-/* Keeps it perfectly full-width on mobile viewports */
-@media (max-width: 600px) {
-    .about-us-section {
-        width: 100%;
-        padding: 0 15px;
-    }
 }
