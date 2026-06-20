@@ -815,3 +815,88 @@ header .logo {
 #news-feed-loader {
     color: #ffffff !important;
 }
+
+/* --- Premium Navigation Header Bar --- */
+/* --- Premium Navigation Header Bar --- */
+.main-navbar {
+    width: 100%;
+    background-color: #ffffff; 
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); 
+    position: sticky;
+    top: 0;
+    z-index: 9999; 
+    font-family: 'Poppins', sans-serif;
+}
+
+.nav-container {
+    width: 100%;
+    /* FIX: Increased width so your text items have enough physical space to layout without wrapping */
+    max-width: 1000px; 
+    margin: 0 auto !important;
+    display: flex !important;
+    /* EQUIDISTANT FIX: This balances the logo and the links across the center viewport area */
+    justify-content: center !important; 
+    align-items: center !important;
+    padding: 12px 20px !important; 
+    box-sizing: border-box !important;
+    /* Equal gap between the LOGO and the HOME menu container */
+    gap: 50px !important; 
+}
+
+/* Brand Logo Layout */
+.nav-logo {
+    display: inline-block !important;
+    font-size: 20px;
+    font-weight: 800;
+    letter-spacing: -0.5px;
+    white-space: nowrap !important; /* Prevents logo text splitting */
+}
+
+.nav-logo .logo-green {
+    color: #16a34a; 
+}
+
+.nav-logo .logo-dark {
+    color: #1f2937; 
+}
+
+/* Navigation Links Layout */
+.nav-menu {
+    display: flex !important;
+    /* EQUIDISTANT GAP: This matches the layout gap exactly so all items stay perfectly spaced */
+    gap: 50px !important; 
+    align-items: center !important;
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+.nav-item {
+    text-decoration: none;
+    color: #4b5563; 
+    font-weight: 600;
+    font-size: 15px;
+    white-space: nowrap !important; /* FIX: Guarantees 'About & Contact' stays completely flat on one line */
+    transition: color 0.2s ease-in-out;
+}
+
+.nav-item:hover, 
+.nav-item.active {
+    color: #16a34a; 
+}
+
+/* --- Mobile Responsive Rules --- */
+@media (max-width: 768px) {
+    .nav-container {
+        max-width: 100%;
+        flex-direction: column !important;
+        gap: 12px !important;
+        padding: 10px !important;
+    }
+    
+    .nav-menu {
+        gap: 18px !important;
+        flex-wrap: wrap !important;
+        justify-content: center !important;
+    }
+}
+
