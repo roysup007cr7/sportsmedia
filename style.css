@@ -821,7 +821,7 @@ header .logo {
 .main-navbar {
     width: 100%;
     background-color: #ffffff; 
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); 
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08); 
     position: sticky;
     top: 0;
     z-index: 9999; 
@@ -830,26 +830,23 @@ header .logo {
 
 .nav-container {
     width: 100%;
-    /* FIX: Increased width so your text items have enough physical space to layout without wrapping */
     max-width: 1000px; 
     margin: 0 auto !important;
     display: flex !important;
-    /* EQUIDISTANT FIX: This balances the logo and the links across the center viewport area */
     justify-content: center !important; 
     align-items: center !important;
-    padding: 12px 20px !important; 
+    padding: 6px 20px !important; /* Kept slim and minimal */
     box-sizing: border-box !important;
-    /* Equal gap between the LOGO and the HOME menu container */
-    gap: 50px !important; 
+    gap: 45px !important; 
 }
 
 /* Brand Logo Layout */
 .nav-logo {
     display: inline-block !important;
-    font-size: 20px;
+    font-size: 18px; 
     font-weight: 800;
     letter-spacing: -0.5px;
-    white-space: nowrap !important; /* Prevents logo text splitting */
+    white-space: nowrap !important; 
 }
 
 .nav-logo .logo-green {
@@ -863,8 +860,7 @@ header .logo {
 /* Navigation Links Layout */
 .nav-menu {
     display: flex !important;
-    /* EQUIDISTANT GAP: This matches the layout gap exactly so all items stay perfectly spaced */
-    gap: 50px !important; 
+    gap: 45px !important; 
     align-items: center !important;
     margin: 0 !important;
     padding: 0 !important;
@@ -874,8 +870,8 @@ header .logo {
     text-decoration: none;
     color: #4b5563; 
     font-weight: 600;
-    font-size: 15px;
-    white-space: nowrap !important; /* FIX: Guarantees 'About & Contact' stays completely flat on one line */
+    font-size: 14px; 
+    white-space: nowrap !important; 
     transition: color 0.2s ease-in-out;
 }
 
@@ -884,29 +880,28 @@ header .logo {
     color: #16a34a; 
 }
 
-/* --- Mobile Responsive Rules --- */
+/* --- MOBILE TWO-ROW IMPROVEMENT --- */
 @media (max-width: 768px) {
     .nav-container {
         max-width: 100%;
-        flex-direction: column !important;
-        /* CRITICAL MOBILE FIX: Keeps the layout tightly packed together vertically */
-        gap: 4px !important; 
-        padding: 6px 10px !important;
+        flex-direction: column !important; /* Pushes the nav links down to the 2nd row */
+        gap: 2px !important; /* Keeps the spacing between the 1st and 2nd row super tight */
+        padding: 5px 10px !important; /* Minimal top and bottom thickness */
     }
     
     .nav-logo {
-        font-size: 16px; /* Scaled down slightly for mobile screens */
+        font-size: 16px; 
+        margin-bottom: 2px !important; /* Minor breathing room before the 2nd row starts */
     }
     
     .nav-menu {
-        /* CRITICAL MOBILE FIX: Reduces horizontal gap between links so they sit compactly */
-        gap: 12px !important; 
-        flex-wrap: wrap !important;
+        gap: 14px !important; /* Balanced spacing between the active links on row 2 */
+        flex-wrap: nowrap !important; /* Keeps all links comfortably aligned inline */
         justify-content: center !important;
     }
 
     .nav-item {
-        font-size: 12px; /* Sleek, legible font size optimized for mobile displays */
+        font-size: 12px; 
     }
 }
 
