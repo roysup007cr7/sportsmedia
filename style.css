@@ -889,14 +889,24 @@ header .logo {
     .nav-container {
         max-width: 100%;
         flex-direction: column !important;
-        gap: 12px !important;
-        padding: 10px !important;
+        /* CRITICAL MOBILE FIX: Keeps the layout tightly packed together vertically */
+        gap: 4px !important; 
+        padding: 6px 10px !important;
+    }
+    
+    .nav-logo {
+        font-size: 16px; /* Scaled down slightly for mobile screens */
     }
     
     .nav-menu {
-        gap: 18px !important;
+        /* CRITICAL MOBILE FIX: Reduces horizontal gap between links so they sit compactly */
+        gap: 12px !important; 
         flex-wrap: wrap !important;
         justify-content: center !important;
+    }
+
+    .nav-item {
+        font-size: 12px; /* Sleek, legible font size optimized for mobile displays */
     }
 }
 
