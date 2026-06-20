@@ -738,3 +738,42 @@ header .logo {
 #news-feed-loader {
     color: #ffffff !important;
 }
+/* --- About Us Section Styling --- */
+.about-us-section {
+    max-width: 450px;
+    margin: 0 auto 25px auto; /* Centers it nicely over the copyright info */
+    text-align: left; /* Aligns left to match image_a2c5c7.jpg */
+    padding: 0 10px;
+}
+
+.about-us-section h3 {
+    font-size: 16px;
+    font-weight: 800;
+    color: #ffffff;
+    letter-spacing: 0.5px;
+    margin-bottom: 6px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+}
+
+.about-us-section .red-line {
+    width: 50px;
+    height: 3px;
+    background-color: #ff3b30; /* Your platform theme accented red */
+    margin-bottom: 15px;
+}
+
+.about-us-section p {
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.7) !important; /* Slightly muted text color for sleek look */
+    line-height: 1.6;
+    font-weight: 400;
+    text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.95) !important;
+}
+
+/* Keeps it perfectly full-width on mobile viewports */
+@media (max-width: 600px) {
+    .about-us-section {
+        width: 100%;
+        padding: 0 15px;
+    }
+}
