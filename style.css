@@ -41,8 +41,9 @@ header p {
 header .logo {
     width: 450px;
     height: auto;
-    margin-bottom: 15px;
+    margin: 25px 0 20px 0; /* Creates distinct space top and bottom so the layout doesn't look squished */
     object-fit: contain;
+    filter: drop-shadow(0px 8px 16px rgba(0,0,0,0.6)); /* Makes your primary brand asset lift off the background wallpaper cleanly */
 }
 
 /* --- Main Container Wrapper --- */
@@ -246,7 +247,6 @@ header .logo {
 }
 
 /* --- Mobile Responsive Adjustments (Max Width: 600px) --- */
-/* --- Mobile Responsive Adjustments (Max Width: 600px) --- */
 @media (max-width: 600px) {
     header .logo {
         width: 300px;
@@ -302,7 +302,6 @@ header .logo {
     }
 }
 
-/* --- Professional Site Footer --- */
 /* --- Professional Two-Tone Footer --- */
 .site-footer {
     width: 100%;
@@ -607,8 +606,9 @@ header .logo {
 }
 
 .server-btn:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(255, 255, 255, 0.25);
+    transform: translateY(-3px) scale(1.02); /* Slight lift and micro enlarger */
+    filter: brightness(1.2); /* Naturally forces the gradient color underneath to pop vividly */
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.6);
 }
 
 /* --- SIMULATED LIVE CHAT MODULE STYLES --- */
@@ -623,7 +623,7 @@ header .logo {
     flex-direction: column;
     overflow: hidden;
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.75);
-    margin-top: 10px;
+    margin: 20px auto 10px auto; /* Centered with a healthy top margin spacing */
 }
 
 .chat-header {
