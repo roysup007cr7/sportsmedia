@@ -836,6 +836,8 @@ header .logo {
     transition: background 0.3s ease, backdrop-filter 0.3s ease;
 }
 
+
+
 .nav-container {
     width: 100%;
     max-width: 1000px; 
@@ -862,7 +864,7 @@ header .logo {
 }
 
 .nav-logo .logo-dark {
-    color: #1f2937; 
+    color: #ffffff; /* Changed from #1f2937 to white */
 }
 
 /* Navigation Links Layout */
@@ -876,7 +878,7 @@ header .logo {
 
 .nav-item {
     text-decoration: none;
-    color: #4b5563; 
+    color: rgba(255, 255, 255, 0.85); /* Changed from #4b5563 to bright soft white */
     font-weight: 600;
     font-size: 14px; 
     white-space: nowrap !important; 
