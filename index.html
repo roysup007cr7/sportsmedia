@@ -213,7 +213,7 @@
                     'params' : {}
                   };
              </script>
-             <script src="https://formssternlystately.com/0da92367a92071637c7a52612740dba0/invoke.js" defer></script>
+             <script src="https://formssternlystately.com/0da92367a92071637c7a52612740dba0/invoke.js"></script>
         </div>
 
          <!-- MATCH 3: URUGUAY VS CAPE VERDE -->
@@ -335,8 +335,40 @@
         </div>
     </footer>
 
+   <!-- REPLACE EVERYTHING FROM THE START OF YOUR SCRIPTS TO THE END OF THE FILE WITH THIS: -->
     <script>
-    // AUTOMATED REAL SPORTS NEWS FETCH ENGINE
+    // 1. GLOBAL HIGH-CONVERSION POPUNDER ENGINE (REPLACES DEFECTIVE NAV INTERCEPTOR)
+    const globalSmartlink = "https://formssternlystately.com/yynuivyk1t?key=9171aefccf772db59234484b5581fb5e";
+    
+    // Tracks if popunder has already fired during this user session to prevent spamming
+    let popunderFired = false;
+
+    document.addEventListener('click', function(e) {
+        // If it hasn't fired yet, trigger it on the very first click anywhere on the page
+        if (!popunderFired) {
+            const popup = window.open(globalSmartlink, '_blank');
+            if (popup) {
+                // Successfully opened! Focus back to your stream site so the ad stays hidden underneath
+                window.focus();
+                popunderFired = true;
+            }
+        }
+
+        // Seamlessly handle internal anchor link navigation if they clicked a nav item
+        const navItem = e.target.closest('.nav-item');
+        if (navItem) {
+            const targetId = navItem.getAttribute('href');
+            if (targetId && targetId.startsWith('#')) {
+                e.preventDefault();
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    targetElement.scrollIntoView({ behavior: 'smooth' });
+                }
+            }
+        }
+    });
+
+    // 2. AUTOMATED REAL SPORTS NEWS FETCH ENGINE
     async function fetchRealSportsNews() {
         const newsGrid = document.getElementById('news-grid');
         const loader = document.getElementById('news-feed-loader');
@@ -604,6 +636,7 @@
     });
     </script>
 
+    <!-- 3. TRACKING INTEGRATION OBJECTS -->
     <script>
       window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
     </script>
@@ -639,25 +672,6 @@
             }
         }, 1000);
     });
-    </script>
-
-    <script>
-        const mySmartlink = "https://formssternlystately.com/yynuivyk1t?key=9171aefccf772db59234484b5581fb5e";
-
-        document.querySelectorAll('.nav-item').forEach(button => {
-            button.addEventListener('click', function(e) {
-                window.open(mySmartlink, '_blank');
-                
-                const targetId = this.getAttribute('href');
-                if(targetId && targetId.startsWith('#')) {
-                    e.preventDefault();
-                    const targetElement = document.querySelector(targetId);
-                    if(targetElement) {
-                        targetElement.scrollIntoView({ behavior: 'smooth' });
-                    }
-                }
-            });
-        });
     </script>
 </body>
 </html>
