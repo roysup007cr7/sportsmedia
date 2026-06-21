@@ -201,7 +201,19 @@ header .logo {
     margin-bottom: 0; 
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.75) !important; 
     transition: transform 0.2s ease;
+    animation: layoutCardFadeIn 0.5s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+    @keyframes layoutCardFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(15px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
+}
+
 
 .main_container:hover {
     transform: scale(1.02);
@@ -904,9 +916,33 @@ header .logo {
     transition: color 0.2s ease-in-out;
 }
 
+.nav-item {
+    position: relative; /* Setup anchor boundary for the animated line */
+}
+
 .nav-item:hover, 
 .nav-item.active {
-    color: #16a34a; 
+    color: #16a34a !important; 
+}
+
+/* Creates a sleek animated slide-out line effect on hover */
+.nav-item::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    transform: scaleX(0);
+    height: 2px;
+    bottom: -4px;
+    left: 0;
+    background-color: #16a34a;
+    transform-origin: bottom right;
+    transition: transform 0.25s ease-out;
+}
+
+.nav-item:hover::after,
+.nav-item.active::after {
+    transform: scaleX(1);
+    transform-origin: bottom left;
 }
 
 /* --- MOBILE TWO-ROW IMPROVEMENT --- */
