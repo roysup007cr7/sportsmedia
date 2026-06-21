@@ -128,6 +128,12 @@ header .logo {
     margin: 0 0 12px 0;
     line-height: 1.5;
     text-align: left;
+    display: -webkit-box;
+    -webkit-line-clamp: 3; /* Limits the news description safely to exactly 3 lines max */
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    min-height: 54px; /* Locks in card sizing uniformity across all three positions */
 }
 
 .news-link {
@@ -491,8 +497,12 @@ header .logo {
 }
 
 .team h3 {
-    font-size: 18px;
+    font-size: 16px;
+    font-weight: 700;
+    letter-spacing: 0.3px;
+    text-transform: uppercase; /* Keeps international team presentation consistent and aggressive */
     text-align: center;
+    margin-top: 5px;
 }
 
 .flag {
@@ -746,6 +756,7 @@ header .logo {
 #chat-user-input:focus {
     border-color: #1a73e8 !important;
     background: #222226 !important;
+    box-shadow: 0 0 0 3px rgba(26, 115, 232, 0.35); /* Generates a modern premium focus halo ring */
 }
 
 #chat-user-input::placeholder {
