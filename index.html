@@ -1,29 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <!-- FIXED NAVIGATION HEADER -->
-<header class="main-navbar">
-    <div class="nav-container">
-        <!-- Left Side: Logo/Text -->
-        <div class="nav-logo">
-            <span class="logo-green">SPORTS</span><span class="logo-dark">MEDIA</span>
-        </div>
-        
-       <!-- UPDATED MENU WITH TARGET DESTINATIONS -->
-<nav class="nav-menu">
-    <a href="#" class="nav-item active">Home</a>
-    <a href="#news-section" class="nav-item">News</a>
-    <a href="#schedules-section" class="nav-item">Schedules/Servers</a>
-    <a href="#footer-section" class="nav-item">About & Contact</a>
-</nav>
-    </div>
-</header>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sports Media Live</title>
     <link rel="stylesheet" href="style.css">
     
     <style>
+        /* CRITICAL SPEED OPTIMIZATION FOR FCP */
+        .news-container, .main_container, .live-chat-box {
+            content-visibility: auto;
+            contain-intrinsic-size: 0 500px;
+        }
+
         .news-container {
             max-width: 95%;
             width: 1000px;
@@ -82,6 +71,24 @@
     </style>
 </head>
 <body>
+    <!-- FIXED STRUCTURE: HEADER NAV MOVED OUT OF HEAD AND INTO BODY -->
+    <header class="main-navbar">
+        <div class="nav-container">
+            <!-- Left Side: Logo/Text -->
+            <div class="nav-logo">
+                <span class="logo-green">SPORTS</span><span class="logo-dark">MEDIA</span>
+            </div>
+            
+           <!-- UPDATED MENU WITH TARGET DESTINATIONS -->
+            <nav class="nav-menu">
+                <a href="#" class="nav-item active">Home</a>
+                <a href="#news-section" class="nav-item">News</a>
+                <a href="#schedules-section" class="nav-item">Schedules/Servers</a>
+                <a href="#footer-section" class="nav-item">About & Contact</a>
+            </nav>
+        </div>
+    </header>
+
     <div class="ad-container" style="text-align: center; margin: 10px 0;">
         <script>
             atOptions = {
@@ -92,9 +99,11 @@
                 'params' : {}
             };
         </script>
-        <script src="https://www.highperformanceformat.com/d06287ca115eb884468d7c2318ac80fa/invoke.js"></script>
+        <!-- DEFER SCRIPT EXECUTIONS TO PROTECT USER DEVICE MEMORY RUNTIMES -->
+        <script src="https://www.highperformanceformat.com/d06287ca115eb884468d7c2318ac80fa/invoke.js" defer></script>
     </div>
 
+    <!-- MAIN BRAND HEADER -->
     <header>
         <div style="width: 500px; max-width: 95%; margin: 20px auto; background: rgba(255, 255, 255, 0.1); border: 1px solid rgba(255, 255, 255, 0.2); border-radius: 18px; padding: 20px; text-align: center; backdrop-filter: blur(10px); position: relative; z-index: 9999;">
             <p style="font-size: 14px; margin-bottom: 15px; color: #fff;">📢 Never miss an equalizer! Get instant push notifications right when the big matches kick off.</p>
@@ -111,7 +120,8 @@
         <p>Leading sports streaming website</p>
     </header>
 
-    <h3 class="match_title">LATEST BREAKING NEWS</h3>
+    <!-- ADDED TARGET SECTION ID FOR NEWS -->
+    <h3 class="match_title" id="news-section">LATEST BREAKING NEWS</h3>
     <div class="news-container">
         <div id="news-feed-loader" style="text-align:center; color:rgba(255,255,255,0.6); padding:10px; font-size: 14px;">
             ⏳ Connecting to live media updates...
@@ -119,7 +129,8 @@
         <div id="news-grid" class="news-grid"></div>
     </div>
 
-    <h3 class="match_title">MATCHES</h3>
+    <!-- ADDED TARGET SECTION ID FOR SCHEDULES -->
+    <h3 class="match_title" id="schedules-section">MATCHES</h3>
 
     <div style="width: 100%; display: flex; justify-content: center; margin: 15px 0 25px 0; clear: both;">
         <button id="refresh-btn" style="background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.3); padding: 12px 28px; border-radius: 30px; color: white; cursor: pointer; font-weight: bold; transition: all 0.3s ease; display: inline-flex; align-items: center; justify-content: center; width: auto; max-width: max-content; box-sizing: border-box; backdrop-filter: blur(5px); -webkit-backdrop-filter: blur(5px);">
@@ -129,68 +140,69 @@
 
     <div class="main">
       <!-- MATCH 1: SPAIN VS SAUDI ARABIA -->
-<div class="main_container" data-start="2026-06-21T21:30:00+05:30">
-    <div class="match-meta">
-        <span class="league-tag">FIFA WORLD CUP</span>
-        <div style="display: flex; gap: 6px; align-items: center;">
-            <button class="share-match-btn">🔗 Share</button>
-            <span class="status-badge"></span>
+        <div class="main_container" data-start="2026-06-21T21:30:00+05:30">
+            <div class="match-meta">
+                <span class="league-tag">FIFA WORLD CUP</span>
+                <div style="display: flex; gap: 6px; align-items: center;">
+                    <button class="share-match-btn">🔗 Share</button>
+                    <span class="status-badge"></span>
+                </div>
+            </div>
+            <div class="teams-display">
+                <div class="team">
+                    <span class="flag">🇪🇸</span>
+                    <h3 class="team-name">Spain</h3>
+                </div>
+                <div class="vs">VS</div>
+                <div class="team">
+                    <span class="flag">🇸🇦</span>
+                    <h3 class="team-name">Saudi Arabia</h3>
+                </div>
+            </div>
+            <div class="timings">
+                <div class="match-time-display"></div>
+            </div>
+            <div class="links">
+                <div class="server-container">
+                    <a href="https://www.goatsports.xyz/2026/06/spain-ksa.html" target="_blank" class="server-btn btn-1">Server 1</a>
+                    <a href="https://es.footem.in/2026/06/spain-vs-saudi-arabia.html" target="_blank" class="server-btn btn-2">Server 2</a>
+                    <a href="https://formssternlystately.com/yynuivyk1t?key=9171aefccf772db59234484b5581fb5e" target="_blank" class="server-btn btn-3">Server 3 (Backup)</a>
+                </div>
+            </div>
         </div>
-    </div>
-    <div class="teams-display">
-        <div class="team">
-            <span class="flag">🇪🇸</span>
-            <h3 class="team-name">Spain</h3>
-        </div>
-        <div class="vs">VS</div>
-        <div class="team">
-            <span class="flag">🇸🇦</span>
-            <h3 class="team-name">Saudi Arabia</h3>
-        </div>
-    </div>
-    <div class="timings">
-        <div class="match-time-display"></div>
-    </div>
-    <div class="links">
-        <div class="server-container">
-            <a href="https://www.goatsports.xyz/2026/06/spain-ksa.html" target="_blank" class="server-btn btn-1">Server 1</a>
-            <a href="https://es.footem.in/2026/06/spain-vs-saudi-arabia.html" target="_blank" class="server-btn btn-2">Server 2</a>
-            <a href="https://formssternlystately.com/yynuivyk1t?key=9171aefccf772db59234484b5581fb5e" target="_blank" class="server-btn btn-3">Server 3 (Backup)</a>
-        </div>
-    </div>
-</div>
 
-<!-- MATCH 2: BELGIUM VS IRAN -->
-<div class="main_container" data-start="2026-06-22T00:30:00+05:30">
-    <div class="match-meta">
-        <span class="league-tag">FIFA WORLD CUP</span>
-        <div style="display: flex; gap: 6px; align-items: center;">
-            <button class="share-match-btn">🔗 Share</button>
-            <span class="status-badge"></span>
+         <!-- MATCH 2: BELGIUM VS IRAN -->
+        <div class="main_container" data-start="2026-06-22T00:30:00+05:30">
+            <div class="match-meta">
+                <span class="league-tag">FIFA WORLD CUP</span>
+                <div style="display: flex; gap: 6px; align-items: center;">
+                    <button class="share-match-btn">🔗 Share</button>
+                    <span class="status-badge"></span>
+                </div>
+            </div>
+            <div class="teams-display">
+                <div class="team">
+                    <span class="flag">🇧🇪</span>
+                    <h3 class="team-name">Belgium</h3>
+                </div>
+                <div class="vs">VS</div>
+                <div class="team">
+                    <span class="flag">🇮🇷</span>
+                    <h3 class="team-name">Iran</h3>
+                </div>
+            </div>
+            <div class="timings">
+                <div class="match-time-display"></div>
+            </div>
+            <div class="links">
+                <div class="server-container">
+                    <a href="https://www.goatsports.xyz/2026/06/bel-irn.html" target="_blank" class="server-btn btn-1">Server 1</a>
+                    <a href="https://es.footem.in/2026/06/belgium-vs-iran.html" target="_blank" class="server-btn btn-2">Server 2</a>
+                    <a href="https://formssternlystately.com/yynuivyk1t?key=9171aefccf772db59234484b5581fb5e" target="_blank" class="server-btn btn-3">Server 3 (Backup)</a>
+                </div>
+            </div>
         </div>
-    </div>
-    <div class="teams-display">
-        <div class="team">
-            <span class="flag">🇧🇪</span>
-            <h3 class="team-name">Belgium</h3>
-        </div>
-        <div class="vs">VS</div>
-        <div class="team">
-            <span class="flag">🇮🇷</span>
-            <h3 class="team-name">Iran</h3>
-        </div>
-    </div>
-    <div class="timings">
-        <div class="match-time-display"></div>
-    </div>
-    <div class="links">
-        <div class="server-container">
-            <a href="https://www.goatsports.xyz/2026/06/bel-irn.html" target="_blank" class="server-btn btn-1">Server 1</a>
-            <a href="https://es.footem.in/2026/06/belgium-vs-iran.html" target="_blank" class="server-btn btn-2">Server 2</a>
-            <a href="https://formssternlystately.com/yynuivyk1t?key=9171aefccf772db59234484b5581fb5e" target="_blank" class="server-btn btn-3">Server 3 (Backup)</a>
-        </div>
-    </div>
-</div>
+
         <div class="ad-container" style="text-align: center; margin: 20px 0;">
              <script>
                   atOptions = {
@@ -201,79 +213,77 @@
                     'params' : {}
                   };
              </script>
-             <script src="https://formssternlystately.com/0da92367a92071637c7a52612740dba0/invoke.js"></script>
+             <script src="https://formssternlystately.com/0da92367a92071637c7a52612740dba0/invoke.js" defer></script>
         </div>
 
-       <!-- MATCH 3: URUGUAY VS CAPE VERDE -->
-<div class="main_container" data-start="2026-06-22T03:30:00+05:30">
-    <div class="match-meta">
-        <span class="league-tag">FIFA WORLD CUP</span>
-        <div style="display: flex; gap: 6px; align-items: center;">
-            <button class="share-match-btn">🔗 Share</button>
-            <span class="status-badge"></span>
+         <!-- MATCH 3: URUGUAY VS CAPE VERDE -->
+        <div class="main_container" data-start="2026-06-22T03:30:00+05:30">
+            <div class="match-meta">
+                <span class="league-tag">FIFA WORLD CUP</span>
+                <div style="display: flex; gap: 6px; align-items: center;">
+                    <button class="share-match-btn">🔗 Share</button>
+                    <span class="status-badge"></span>
+                </div>
+            </div>
+            <div class="teams-display">
+                <div class="team">
+                    <span class="flag">🇺🇾</span>
+                    <h3 class="team-name">Uruguay</h3>
+                </div>
+                <div class="vs">VS</div>
+                <div class="team">
+                    <span class="flag">🇨🇻</span>
+                    <h3 class="team-name">Cape Verde</h3>
+                </div>
+            </div>
+            <div class="timings">
+                <div class="match-time-display"></div>
+            </div>
+            <div class="links">
+                <div class="server-container">
+                    <a href="https://www.goatsports.xyz/2026/06/urug-capv.html" target="_blank" class="server-btn btn-1">Server 1</a>
+                    <a href="https://es.footem.in/2026/06/uruguay-vs-capeverde.html" target="_blank" class="server-btn btn-2">Server 2</a>
+                    <a href="https://formssternlystately.com/yynuivyk1t?key=9171aefccf772db59234484b5581fb5e" target="_blank" class="server-btn btn-3">Server 3 (Backup)</a>
+                </div>
+            </div>
         </div>
-    </div>
-    <div class="teams-display">
-        <div class="team">
-            <span class="flag">🇺🇾</span>
-            <h3 class="team-name">Uruguay</h3>
-        </div>
-        <div class="vs">VS</div>
-        <div class="team">
-            <span class="flag">🇨🇻</span>
-            <h3 class="team-name">Cape Verde</h3>
-        </div>
-    </div>
-    <div class="timings">
-        <div class="match-time-display"></div>
-    </div>
-    <div class="links">
-        <div class="server-container">
-            <a href="https://www.goatsports.xyz/2026/06/urug-capv.html" target="_blank" class="server-btn btn-1">Server 1</a>
-            <a href="https://es.footem.in/2026/06/uruguay-vs-capeverde.html" target="_blank" class="server-btn btn-2">Server 2</a>
-            <a href="https://formssternlystately.com/yynuivyk1t?key=9171aefccf772db59234484b5581fb5e" target="_blank" class="server-btn btn-3">Server 3 (Backup)</a>
-        </div>
-    </div>
-</div>
 
-<!-- MATCH 4: NEW ZEALAND VS EGYPT -->
-<div class="main_container" data-start="2026-06-22T06:30:00+05:30">
-    <div class="match-meta">
-        <span class="league-tag">FIFA WORLD CUP</span>
-        <div style="display: flex; gap: 6px; align-items: center;">
-            <button class="share-match-btn">🔗 Share</button>
-            <span class="status-badge"></span>
+         <!-- MATCH 4: NEW ZEALAND VS EGYPT -->
+        <div class="main_container" data-start="2026-06-22T06:30:00+05:30">
+            <div class="match-meta">
+                <span class="league-tag">FIFA WORLD CUP</span>
+                <div style="display: flex; gap: 6px; align-items: center;">
+                    <button class="share-match-btn">🔗 Share</button>
+                    <span class="status-badge"></span>
+                </div>
+            </div>
+            <div class="teams-display">
+                <div class="team">
+                    <span class="flag">🇳🇿</span>
+                    <h3 class="team-name">New Zealand</h3>
+                </div>
+                <div class="vs">VS</div>
+                <div class="team">
+                    <span class="flag">🇪🇬</span>
+                    <h3 class="team-name">Egypt</h3>
+                </div>
+            </div>
+            <div class="timings">
+                <div class="match-time-display"></div>
+            </div>
+            <div class="links">
+                <div class="server-container">
+                    <a href="https://www.goatsports.xyz/2026/06/nz-egyp.html" target="_blank" class="server-btn btn-1">Server 1</a>
+                    <a href="https://es.footem.in/2026/06/newzealand-vs-egypt.html" target="_blank" class="server-btn btn-2">Server 2</a>
+                    <a href="https://formssternlystately.com/yynuivyk1t?key=9171aefccf772db59234484b5581fb5e" target="_blank" class="server-btn btn-3">Server 3 (Backup)</a>
+                </div>
+            </div>
         </div>
-    </div>
-    <div class="teams-display">
-        <div class="team">
-            <span class="flag">🇳🇿</span>
-            <h3 class="team-name">New Zealand</h3>
-        </div>
-        <div class="vs">VS</div>
-        <div class="team">
-            <span class="flag">🇪🇬</span>
-            <h3 class="team-name">Egypt</h3>
-        </div>
-    </div>
-    <div class="timings">
-        <div class="match-time-display"></div>
-    </div>
-    <div class="links">
-        <div class="server-container">
-            <a href="https://www.goatsports.xyz/2026/06/nz-egyp.html" target="_blank" class="server-btn btn-1">Server 1</a>
-            <a href="https://es.footem.in/2026/06/newzealand-vs-egypt.html" target="_blank" class="server-btn btn-2">Server 2</a>
-            <a href="https://formssternlystately.com/yynuivyk1t?key=9171aefccf772db59234484b5581fb5e" target="_blank" class="server-btn btn-3">Server 3 (Backup)</a>
-        </div>
-    </div>
-</div>
 
         <div class="ad-container">
             <script async="async" data-cfasync="false" src="https://pl29756407.effectivecpmnetwork.com/00eab0ceea0ea96e1764d988f090a9e4/invoke.js"></script>
             <div id="container-00eab0ceea0ea96e1764d988f090a9e4"></div>
         </div>
-
-       
 
         <div class="live-chat-box">
             <div class="chat-header">
@@ -294,38 +304,36 @@
     <button id="backToTop" title="Go to top">↑</button>
     
     <!-- PROFESSIONAL TWO-TONE FOOTER -->
-<footer class="site-footer">
-    <!-- Top Row: About Us (Lighter background container) -->
-    <div class="footer-top-container">
-        <div class="about-us-section">
-            <h3>ABOUT US</h3>
-            <div class="red-line"></div>
-            <p>
-                Latest ISL, MLS, Saudi, Indian, Premier, Champions League, Laliga, football live News, Transfers, Lineups, Schedules, And Complete Match Results. Join our official community to stay updated instantly!
-            </p>
+    <footer class="site-footer" id="footer-section">
+        <div class="footer-top-container">
+            <div class="about-us-section">
+                <h3>ABOUT US</h3>
+                <div class="red-line"></div>
+                <p>
+                    Latest ISL, MLS, Saudi, Indian, Premier, Champions League, Laliga, football live News, Transfers, Lineups, Schedules, And Complete Match Results. Join our official community to stay updated instantly!
+                </p>
+            </div>
         </div>
-    </div>
 
-    <!-- Bottom Row: Copyright & Socials (Pitch Black container) -->
-    <div class="footer-bottom-container">
-        <p>© 2026 SPORTS MEDIA.in. All rights reserved.</p>
-        <p>Owned & Operated by <strong>Supriyo Roy</strong> (Sports Media Group) since 2022. Designed by <strong>Supriyo Roy</strong> & Website maker <strong>Arajit Debnath</strong> (professional CS coder)</p>
-        
-        <div class="footer-links">
-            <a href="dmca.html">DMCA Disclaimer</a>
-            <span>|</span>
-            <a href="privacy.html">Privacy Policy</a>
-            <span>|</span>
-            <a href="mailto:roysup007@gmail.com" style="color: #00ffcc; font-weight: bold;">📧 Contact: roysup007@gmail.com</a>
-            <span>|</span>
-            <a href="https://instagram.com/supriyo_roycr7" target="_blank" style="color: #ff007f; font-weight: bold;">📸 Instagram</a>
-            <span>|</span>
-            <a href="https://www.facebook.com/profile.php?id=100073677800914" target="_blank" style="color: #1877f2; font-weight: bold;">🔷 Facebook</a>
-            <span>|</span>
-            <a href="https://x.com/supriyo_roy007" target="_blank" style="color: #ffffff; font-weight: bold;">𝕏 Account</a>
+        <div class="footer-bottom-container">
+            <p>© 2026 SPORTS MEDIA.in. All rights reserved.</p>
+            <p>Owned & Operated by <strong>Supriyo Roy</strong> (Sports Media Group) since 2022. Designed by <strong>Supriyo Roy</strong> & Website maker <strong>Arajit Debnath</strong> (professional CS coder)</p>
+            
+            <div class="footer-links">
+                <a href="dmca.html">DMCA Disclaimer</a>
+                <span>|</span>
+                <a href="privacy.html">Privacy Policy</a>
+                <span>|</span>
+                <a href="mailto:roysup007@gmail.com" style="color: #00ffcc; font-weight: bold;">📧 Contact: roysup007@gmail.com</a>
+                <span>|</span>
+                <a href="https://instagram.com/supriyo_roycr7" target="_blank" style="color: #ff007f; font-weight: bold;">📸 Instagram</a>
+                <span>|</span>
+                <a href="https://www.facebook.com/profile.php?id=100073677800914" target="_blank" style="color: #1877f2; font-weight: bold;">🔷 Facebook</a>
+                <span>|</span>
+                <a href="https://x.com/supriyo_roy007" target="_blank" style="color: #ffffff; font-weight: bold;">𝕏 Account</a>
+            </div>
         </div>
-    </div>
-</footer>
+    </footer>
 
     <script>
     // AUTOMATED REAL SPORTS NEWS FETCH ENGINE
@@ -426,7 +434,6 @@
         });
     }
 
-    // FLOATING BACK TO TOP SCRIPT CONTROLLER
     const bttButton = document.getElementById("backToTop");
     window.onscroll = function() {
         if (bttButton) {
@@ -443,7 +450,6 @@
         });
     }
 
-    // AUTOMATED NATIVE/CLIPBOARD SHARE MODULE
     document.querySelectorAll('.share-match-btn').forEach(btn => {
         btn.addEventListener('click', function(e) {
             e.stopPropagation();
@@ -479,7 +485,6 @@
         });
     });
 
-    // AUTOMATED SPORTS CHAT SIMULATOR ENGINE
     document.addEventListener("DOMContentLoaded", () => {
         updateMatchSignalsAndTimes();
         fetchRealSportsNews(); 
@@ -599,8 +604,6 @@
     });
     </script>
 
-    <script src="https://formssternlystately.com/8c/66/83/8c66837016984dc8652552dcd427cb5b.js"></script>
-
     <script>
       window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
     </script>
@@ -638,18 +641,21 @@
     });
     </script>
 
-    <!-- ... Your existing match cards and footer are up here ... -->
-
     <script>
-        // Paste the logic here
-
         const mySmartlink = "https://formssternlystately.com/yynuivyk1t?key=9171aefccf772db59234484b5581fb5e";
 
-        // This looks for all navigation items in your top navbar bar
         document.querySelectorAll('.nav-item').forEach(button => {
-            button.addEventListener('click', () => {
-                // Instantly launches the profitable smartlink in a background tab
+            button.addEventListener('click', function(e) {
                 window.open(mySmartlink, '_blank');
+                
+                const targetId = this.getAttribute('href');
+                if(targetId && targetId.startsWith('#')) {
+                    e.preventDefault();
+                    const targetElement = document.querySelector(targetId);
+                    if(targetElement) {
+                        targetElement.scrollIntoView({ behavior: 'smooth' });
+                    }
+                }
             });
         });
     </script>
