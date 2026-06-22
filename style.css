@@ -441,13 +441,19 @@ header .logo {
     justify-content: space-between;
     align-items: center;
     width: 100%;
-    margin-bottom: 12px;
-    font-size: 13px;
+    margin-bottom: 16px; /* Added breathing room above the team entries */
+    font-size: 12px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    padding-bottom: 8px;
 }
 
 .league-tag {
-    color: rgba(255, 255, 255, 0.8);
-    font-weight: 500;
+    color: rgba(255, 255, 255, 0.85);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    padding-left: 8px;
+    border-left: 3px solid #1a73e8; /* Creates a clean team-sport vertical marker */
 }
 
 /* Status Badges Setup */
@@ -491,8 +497,14 @@ header .logo {
 }
 
 .share-match-btn:hover {
-    background: rgba(255, 255, 255, 0.25);
-    transform: scale(1.05);
+    background: rgba(255, 255, 255, 0.22);
+    color: #ffffff !important;
+    border-color: rgba(255, 255, 255, 0.5);
+    transform: translateY(-1px);
+}
+
+.share-match-btn:active {
+    transform: scale(0.95); /* Click squeeze feedback */
 }
 
 /* Teams Presentation Split */
