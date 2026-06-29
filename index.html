@@ -143,7 +143,7 @@
 
     <div class="main">
       <!-- MATCH 1:  -->
-<div class="main_container" data-start="2026-06-29T22:30:00+05:30">
+<div class="main_container" data-start="2026-06-29T22:30:00+05:30" data-match-id="1">
     <div class="match-meta">
         <span class="league-tag">WORLD CUP 2026</span>
         <div style="display: flex; gap: 6px; align-items: center;">
@@ -403,60 +403,98 @@
         }
     }
 
-    function updateMatchSignalsAndTimes() {
-        const now = new Date();
-        const matches = document.querySelectorAll('.main_container[data-start]');
+    async function updateMatchSignalsAndTimes() {
+    const now = new Date();
+    const matches = document.querySelectorAll('.main_container[data-start]');
+    
+    matches.forEach(async (card) => {
+        const startTimeString = card.getAttribute('data-start');
+        const matchId = card.getAttribute('data-match-id');
+        if (!startTimeString) return;
+
+        const matchStartTime = new Date(startTimeString);
+        const matchEndTime = new Date(matchStartTime.getTime() + (2 * 60 * 60 * 1000)); 
         
-        matches.forEach(card => {
-            const startTimeString = card.getAttribute('data-start');
-            if (!startTimeString) return;
-
-            const matchStartTime = new Date(startTimeString);
-            const matchEndTime = new Date(matchStartTime.getTime() + (2 * 60 * 60 * 1000)); 
-            
-            const badge = card.querySelector('.status-badge');
-            const timeDisplay = card.querySelector('.match-time-display');
-            const servers = card.querySelectorAll('.server-btn');
-            
-            if (now < matchStartTime) {
-                if (badge) {
-                    badge.className = "status-badge upcoming-badge";
-                    badge.innerHTML = "🕒 UPCOMING";
-                }
-                card.style.opacity = "1"; 
-                servers.forEach(btn => btn.classList.remove('live-server-glow'));
-            } 
-            else if (now >= matchStartTime && now <= matchEndTime) {
-                if (badge) {
-                    badge.className = "status-badge live-blink";
-                    badge.innerHTML = "● LIVE";
-                }
-                card.style.opacity = "1";
-                servers.forEach(btn => btn.classList.add('live-server-glow'));
-            } 
-            else {
-                if (badge) {
-                    badge.className = "status-badge finished-badge";
-                    badge.innerHTML = "🏁 FINISHED";
-                }
-                card.style.opacity = "0.6";
-                servers.forEach(btn => btn.classList.remove('live-server-glow'));
+        const badge = card.querySelector('.status-badge');
+        const timeDisplay = card.querySelector('.match-time-display');
+        const servers = card.querySelectorAll('.server-btn');
+        const vsElement = card.querySelector('.vs');
+        
+        // 1. Handle Game States (Upcoming, Live, Finished)
+        if (now < matchStartTime) {
+            if (badge) {
+                badge.className = "status-badge upcoming-badge";
+                badge.innerHTML = "🕒 UPCOMING";
             }
-
-            const localTimeOptions = { hour: '2-digit', minute: '2-digit', hour12: true };
-            const localTimeStr = matchStartTime.toLocaleTimeString([], localTimeOptions);
-            const localDateStr = matchStartTime.toLocaleDateString([], { month: 'short', day: 'numeric' });
-            const userTimezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
-
-            if (timeDisplay) {
-                timeDisplay.innerHTML = `
-                    <div class="local-time-text">📅 ${localDateStr} &nbsp;|&nbsp; ⏰ ${localTimeStr}</div>
-                    <small class="timezone-subtext">Device Timezone: ${userTimezone}</small>
-                `;
+            card.style.opacity = "1"; 
+            servers.forEach(btn => btn.classList.remove('live-server-glow'));
+        } 
+        else if (now >= matchStartTime && now <= matchEndTime) {
+            if (badge) {
+                badge.className = "status-badge live-blink";
+                badge.innerHTML = "● LIVE";
             }
-        });
+            card.style.opacity = "1";
+            servers.forEach(btn => btn.classList.add('live-server-glow'));
+            
+            // OPTIONAL: Fetch live real-time score updates mid-game
+            if (matchId) {
+                fetchLiveScore(matchId, vsElement);
+            }
+        } 
+        else {
+            if (badge) {
+                badge.className = "status-badge finished-badge";
+                badge.innerHTML = "🏁 FINISHED";
+            }
+            card.style.opacity = "0.85";
+            servers.forEach(btn => btn.classList.remove('live-server-glow'));
+            
+            // AUTOMATIC SCORE FETCH FOR FINISHED MATCHES
+            if (matchId && vsElement) {
+                fetchLiveScore(matchId, vsElement);
+            }
+        }
+
+        // Handle Timezone Adjustments
+        const localTimeOptions = { hour: '2-digit', minute: '2-digit', hour12: true };
+        const localTimeStr = matchStartTime.toLocaleTimeString([], localTimeOptions);
+        const localDateStr = matchStartTime.toLocaleDateString([], { month: 'short', day: 'numeric' });
+        const userTimezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
+
+        if (timeDisplay) {
+            timeDisplay.innerHTML = `
+                <div class="local-time-text">📅 ${localDateStr} &nbsp;|&nbsp; ⏰ ${localTimeStr}</div>
+                <small class="timezone-subtext">Device Timezone: ${userTimezone}</small>
+            `;
+        }
+    });
+}
+
+// Helper Async Core function to fetch automated API sports scores
+async function fetchLiveScore(id, targetDisplay) {
+    try {
+        // Updated URL to pull directly from the World Cup 2026 schedule index
+        const res = await fetch(`https://fixturedownload.com/feed/json/fifa-world-cup-2026/fixtures`); 
+        const data = await res.json();
+        
+        // Find the specific World Cup Match Number (1 to 104)
+        const matchData = data.find(f => f.MatchNumber == id || f.Id == id);
+        
+        if (matchData && matchData.HomeTeamScore !== null && matchData.AwayTeamScore !== null) {
+            const scoreText = `${matchData.HomeTeamScore} - ${matchData.AwayTeamScore}`;
+            
+            // Updates your VS circle into a premium result pill cleanly
+            targetDisplay.innerHTML = scoreText;
+            targetDisplay.style.setProperty('background', '#ff3b30', 'important');
+            targetDisplay.style.borderRadius = "8px";
+            targetDisplay.style.padding = "4px 14px";
+            targetDisplay.style.fontSize = "15px";
+        }
+    } catch (err) {
+        console.log("World Cup score sync standby...", err);
     }
-
+}
     const bttButton = document.getElementById("backToTop");
     window.onscroll = function() {
         if (bttButton) {

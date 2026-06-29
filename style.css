@@ -538,11 +538,12 @@ header .logo {
     line-height: 1;
 }
 
+/* Update this in your style.css */
 .vs {
     font-size: 16px;
     font-weight: 900;
     color: #ffffff !important;
-    background: #1a73e8 !important;
+    background: #1a73e8; /* REMOVED !important HERE SO ENGINE CAN UPDATE AUTOMATICALLY */
     padding: 6px 10px;
     border-radius: 50%;
 }
