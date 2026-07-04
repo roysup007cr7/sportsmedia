@@ -14,9 +14,7 @@
     gtag('config', 'G-8ZLQNMS4R2');
   </script>
 
-  <script src="https://cdn.jsdelivr.net/npm/shaka-player@4.16.2/dist/shaka-player.ui.min.js"></script>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/shaka-player@4.16.2/dist/controls.min.css">
-  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Rajdhani:wght@400;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;600;700&display=swap" rel="stylesheet">
 
   <style>
     *{
@@ -33,134 +31,26 @@
       font-family:'Rajdhani',system-ui,sans-serif;
     }
 
-    /* Background */
-    .shaka-video-container{
-      position:fixed;
-      inset:0;
-      background:
-        radial-gradient(circle at top,#ff3b3b30 0%,transparent 45%),
-        radial-gradient(circle at bottom,#ff000015 0%,transparent 50%),
-        linear-gradient(135deg,#280000 0%,#090909 60%,#000 100%);
-      display:flex;
-      align-items:center;
+    /* Full-screen video container */
+    .video-container {
+      position: fixed;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      background: #000;
+      display: flex;
+      align-items: center;
       justify-content:center;
+      z-index: 1;
     }
 
-    video{
-      width:100%;
-      height:100%;
-      object-fit:contain;
-      background:#000;
+    iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
     }
 
-    .shaka-spinner-container{
-      display:none!important;
-    }
-
-    /* Controls */
-    .shaka-controls-container,
-    .shaka-bottom-controls,
-    .shaka-controls-button-panel {
-        box-shadow: none !important;
-        filter: none !important;
-    }
-
-    .shaka-video-container::before,
-    .shaka-video-container::after {
-        display: none !important;
-    }
-
-    /* Buttons */
-    .shaka-controls-button-panel button,
-    .shaka-overflow-menu button,
-    .shaka-settings-menu button{
-      color:#fff!important;
-      border-radius:12px;
-      transition:.25s;
-    }
-
-    .shaka-controls-button-panel button:hover,
-    .shaka-overflow-menu button:hover,
-    .shaka-settings-menu button:hover{
-      background:rgba(255,0,0,.18)!important;
-      color:#ff3d3d!important;
-    }
-
-    /* Seekbar */
-    .shaka-seek-bar-container{
-      border-radius:999px!important;
-      overflow:hidden!important;
-    }
-
-    .shaka-range-element{
-      accent-color:#ff2020!important;
-    }
-
-    /* Menus */
-    .shaka-overflow-menu,
-    .shaka-settings-menu{
-      background:rgba(18,18,18,.92)!important;
-      backdrop-filter:blur(20px);
-      border:1px solid rgba(255,60,60,.25)!important;
-      border-radius:18px!important;
-      box-shadow:
-          0 20px 50px rgba(0,0,0,.6),
-          0 0 30px rgba(255,0,0,.15);
-      color:#fff!important;
-    }
-
-    /* Watermark */
-    #wm{
-      position:absolute;
-      bottom:70px;
-      left:50%;
-      transform:translateX(-50%);
-      z-index:9999;
-      display:flex;
-      align-items:center;
-      gap:10px;
-      pointer-events:none;
-      opacity:.55;
-    }
-
-    .wm-rule{
-      width:22px;
-      height:2px;
-      border-radius:999px;
-      background:linear-gradient(90deg,transparent,#ff2a2a);
-    }
-
-    .wm-rule.r{
-      background:linear-gradient(90deg,#ff2a2a,transparent);
-    }
-
-    .wm-inner{
-      display:flex;
-      flex-direction:column;
-      align-items:center;
-    }
-
-    .wm-name{
-      color:#fff;
-      font-family:'Bebas Neue',sans-serif;
-      font-size:18px;
-      letter-spacing:4px;
-      text-shadow:
-          0 0 12px rgba(255,0,0,.6),
-          0 0 30px rgba(255,0,0,.25);
-    }
-
-    .wm-name .r{
-      color:#ff2a2a;
-    }
-
-    .wm-url{
-      font-size:9px;
-      letter-spacing:3px;
-      color:#ffd3d3;
-    }
-
-    /* Join Button */
+    /* Floating Join Button */
     .st-join-btn{
       position:absolute;
       top:10px;
@@ -193,15 +83,6 @@
     }
 
     @media(max-width:600px){
-      #wm{
-        bottom:62px;
-      }
-      .wm-name{
-        font-size:14px;
-      }
-      .wm-url{
-        font-size:8px;
-      }
       .st-join-btn{
         top:6px;
         left:6px;
@@ -214,153 +95,20 @@
 </head>
 
 <body>
-  <div class="shaka-video-container" id="player-container">
-    <video id="video" autoplay playsinline></video>
-
-    <div id="wm">
-      <div class="wm-rule"></div>
-      <div class="wm-inner">
-        <div class="wm-name">SPORTS<span class="r">MEDIA</span></div>
-        <div class="wm-url">#supriyo</div>
-      </div>
-      <div class="wm-rule r"></div>
-    </div>
-  </div>
 
   <a href="https://chat.whatsapp.com/DYqeiR11qha8byg0TB3jix?s=cl&p=a&ilr=2" target="_blank" class="st-join-btn">
     Follow Us
   </a>
 
-  <script>
-    document.addEventListener('DOMContentLoaded', async () => {
-      shaka.polyfill.installAll();
+  <div class="video-container">
+    <iframe 
+      src="https://krxplor.github.io/mpd/mpd1.html" 
+      allowfullscreen="true" 
+      webkitallowfullscreen="true" 
+      mozallowfullscreen="true"
+      scrolling="no">
+    </iframe>
+  </div>
 
-      if (!shaka.Player.isBrowserSupported()) return;
-
-      const videoEl = document.getElementById('video');
-      const container = document.getElementById('player-container');
-      const wm = document.getElementById('wm');
-
-const streamUrl = "https://qp-pldt-live-bpk-ucd-prod.akamaized.net/bpk-tv/fifa_ppv1/default/index.mpd";
-      const keyId = "2c338a117d434ce4bbe3569231af90f1";
-      const key = "a9633d901ee8a3f4f58ac314b5c5f4fb";
-
-      const player = new shaka.Player();
-      await player.attach(videoEl);
-
-      const ui = new shaka.ui.Overlay(player, container, videoEl);
-
-      ui.configure({
-        controlPanelElements: [
-          'play_pause',
-          'mute',
-          'volume',
-          'time_and_duration',
-          'spacer',
-          'language',
-          'captions',
-          'picture_in_picture',
-          'quality',
-          'fullscreen'
-        ],
-        seekBarColors: {
-          base: 'rgba(255,255,255,.32)',
-          buffered: 'rgba(255,255,255,.55)',
-          played: '#00ff84'
-        }
-      });
-
-      setTimeout(() => container.appendChild(wm), 100);
-
-      const playerConfig = {
-        abr: {
-          defaultBandwidthEstimate: 10000,
-          enabled: true,
-          switchInterval: 1
-        },
-        manifest: {
-          defaultPresentationDelay: 4,
-          dash: {
-            ignoreSuggestedPresentationDelay: true,
-            ignoreMinBufferTime: true,
-            autoCorrectDrift: true
-          }
-        },
-        streaming: {
-          bufferingGoal: 8,
-          rebufferingGoal: 2,
-          bufferBehind: 10,
-          lowLatencyMode: true,
-          safeSeekOffset: 4,
-          stallThreshold: 1,
-          jumpLargeGaps: true
-        }
-      };
-
-      if (keyId && key) {
-        playerConfig.drm = {
-          clearKeys: {
-            [keyId]: key
-          }
-        };
-      }
-
-      player.configure(playerConfig);
-
-      try {
-        await player.load(streamUrl, -4);
-        videoEl.play();
-      } catch (e) {
-        console.log('Player load error:', e);
-      }
-
-      const onFsChange = () => {
-        const fsEl =
-          document.fullscreenElement ||
-          document.webkitFullscreenElement ||
-          document.mozFullScreenElement;
-
-        if (fsEl) {
-          fsEl.appendChild(wm);
-          wm.style.opacity = '.50';
-          wm.style.bottom = '74px';
-        } else {
-          container.appendChild(wm);
-          wm.style.opacity = '.55';
-          wm.style.bottom = '70px';
-        }
-      };
-
-      document.addEventListener('fullscreenchange', onFsChange);
-      document.addEventListener('webkitfullscreenchange', onFsChange);
-      document.addEventListener('mozfullscreenchange', onFsChange);
-
-      videoEl.addEventListener('play', () => {
-        setTimeout(() => {
-          wm.style.opacity = '.30';
-        }, 3000);
-      });
-
-      videoEl.addEventListener('pause', () => {
-        wm.style.opacity = '.55';
-      });
-
-      document.addEventListener('mousemove', () => {
-        wm.style.opacity = '.55';
-        clearTimeout(window._wmTimer);
-        window._wmTimer = setTimeout(() => {
-          if (!videoEl.paused) wm.style.opacity = '.30';
-        }, 3000);
-      });
-
-      document.addEventListener('touchstart', () => {
-        wm.style.opacity = '.55';
-        clearTimeout(window._wmTimer);
-        window._wmTimer = setTimeout(() => {
-          if (!videoEl.paused) wm.style.opacity = '.30';
-        }, 3000);
-      });
-    });
-  </script>
 </body>
 </html>
