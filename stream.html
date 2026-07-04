@@ -16,6 +16,75 @@
             flex-direction: column;
             align-items: center;
         }
+
+        /* 1. EXTENDED NAVBAR STYLING TO SUPPORT PROFILE ENGINE */
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            box-sizing: border-box;
+        }
+        .nav-right-profile {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .profile-avatar-wrapper {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            border: 2px solid #00ffcc;
+            overflow: hidden;
+            box-shadow: 0 0 10px rgba(0, 255, 204, 0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(255, 255, 255, 0.1);
+        }
+        .profile-avatar-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .nav-wp-link-icon {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.2s ease, filter 0.2s ease;
+        }
+        .nav-wp-link-icon:hover {
+            transform: scale(1.15);
+            filter: drop-shadow(0 0 8px #25D366);
+        }
+        .nav-wp-link-icon img {
+            width: 32px;
+            height: 32px;
+        }
+
+        /* Responsive adjustment for small mobiles */
+        @media(max-width: 600px) {
+            .nav-container {
+                flex-wrap: wrap;
+                gap: 10px;
+                justify-content: center;
+                padding: 10px;
+            }
+            .nav-right-profile {
+                order: 2;
+            }
+            .nav-menu {
+                order: 3;
+                width: 100%;
+                justify-content: center;
+                display: flex;
+                gap: 15px;
+            }
+        }
+
         .stream-header {
             text-align: center;
             margin-bottom: 20px;
@@ -150,6 +219,15 @@
                 <a href="index.html#schedules" class="nav-item">Schedules</a>
                 <a href="#about-us-section" class="nav-item">About & Contact</a>
             </nav>
+            
+            <div class="nav-right-profile">
+                <a href="https://chat.whatsapp.com/DYqeiR11qha8byg0TB3jix" target="_blank" class="nav-wp-link-icon" title="Join Our WhatsApp Group">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp Group Menu Connection">
+                </a>
+                <div class="profile-avatar-wrapper">
+                    <img src="sup.jpg" alt="Supriyo Roy" class="profile-avatar-img">
+                </div>
+            </div>
         </div>
     </header>
 
@@ -204,7 +282,7 @@
 
         <div class="footer-bottom-container">
             <p>© 2026 SPORTS MEDIA.in. All rights reserved.</p>
-            <p>Owned & Operated by <strong>Supriyo Roy</strong> (Sports Media Group) since 2022. Designed by <strong>Supriyo Roy.</strong></p>
+            <p>Owned & Operated by <strong>Supriyo Roy</strong> (Sports Media Group) since 2022. Designed by <strong>Supriyo Roy</strong> & Website maker <strong>Arajit Debnath</strong> (professional CS coder)</p>
             
             <div class="footer-links">
                 <a href="dmca.html">DMCA Disclaimer</a>
@@ -215,7 +293,7 @@
                 <span>|</span>
                 <a href="https://instagram.com/supriyo_roycr7" target="_blank" style="color: #ff007f; font-weight: bold;">📸 Instagram</a>
                 <span>|</span>
-                <a href="https://www.facebook.com/share/1FBoak5USy/" target="_blank" style="color: #1877f2; font-weight: bold;">🔷 Facebook</a>
+                <a href="https://www.facebook.com/share/14cgTqthXys/" target="_blank" style="color: #1877f2; font-weight: bold;">🔷 Facebook</a>
                 <span>|</span>
                 <a href="https://x.com/supriyo_roy007" target="_blank" style="color: #ffffff; font-weight: bold;">𝕏 Account</a>
             </div>

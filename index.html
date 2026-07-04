@@ -6,7 +6,6 @@
     <title>Sports Media Live</title>
     <link rel="stylesheet" href="style.css">
     
-    <!-- OFFICIAL AD NETWORK AUTOMATED POPUNDER ENGINE -->
     <script src="https://formssternlystately.com/8c/66/83/8c66837016984dc8652552dcd427cb5b.js"></script>
     
     <style>
@@ -71,24 +70,84 @@
         .upcoming-badge { color: #ffcc00; }
         .finished-badge { color: rgba(255,255,255,0.4); }
         .live-server-glow { box-shadow: 0 0 10px #00ffcc; }
+
+        /* --- ADDED PROFILE & WHATSAPP LOGO STYLES FOR THE NAVBAR --- */
+        .nav-right-profile {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .profile-avatar-wrapper {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            border: 2px solid #00ffcc;
+            overflow: hidden;
+            box-shadow: 0 0 10px rgba(0, 255, 204, 0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(255, 255, 255, 0.1);
+        }
+        .profile-avatar-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .nav-wp-link-icon {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.2s ease, filter 0.2s ease;
+        }
+        .nav-wp-link-icon:hover {
+            transform: scale(1.15);
+            filter: drop-shadow(0 0 8px #25D366);
+        }
+        .nav-wp-link-icon img {
+            width: 32px;
+            height: 32px;
+        }
+
+        /* Mobile Optimization for Navbar content */
+        @media(max-width: 768px) {
+            .nav-container {
+                flex-wrap: wrap;
+                gap: 10px;
+                justify-content: space-between;
+                padding: 10px 15px;
+            }
+            .nav-menu {
+                width: 100%;
+                justify-content: center;
+                order: 3;
+                margin-top: 5px;
+            }
+        }
     </style>
 </head>
 <body>
-    <!-- FIXED STRUCTURE: HEADER NAV MOVED OUT OF HEAD AND INTO BODY -->
     <header class="main-navbar">
         <div class="nav-container">
-            <!-- Left Side: Logo/Text -->
             <div class="nav-logo">
                 <span class="logo-green">SPORTS</span><span class="logo-dark">MEDIA</span>
             </div>
             
-           <!-- UPDATED MENU WITH TARGET DESTINATIONS -->
             <nav class="nav-menu">
                 <a href="#" class="nav-item active">Home</a>
                 <a href="#news-section" class="nav-item">News</a>
                 <a href="#schedules-section" class="nav-item">Schedules/Servers</a>
                 <a href="#footer-section" class="nav-item">About & Contact</a>
             </nav>
+
+            <div class="nav-right-profile">
+                <a href="https://chat.whatsapp.com/DYqeiR11qha8byg0TB3jix" target="_blank" class="nav-wp-link-icon" title="Join Our WhatsApp Group">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp Group">
+                </a>
+                <div class="profile-avatar-wrapper">
+                    <img src="sup.jpg" alt="Supriyo Roy" class="profile-avatar-img">
+                </div>
+            </div>
         </div>
     </header>
 
