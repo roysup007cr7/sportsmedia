@@ -10,13 +10,32 @@
     <script src="https://formssternlystately.com/8c/66/83/8c66837016984dc8652552dcd427cb5b.js"></script>
     
     <style>
+        /* Prevent layout horizontal breaking on viewports below 480px */
+        *, *:before, *:after {
+            box-sizing: border-box;
+        }
+
+        html, body {
+            width: 100%;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden; /* Hard restriction on horizontal overflowing layout bounds */
+        }
+
+        /* Ensure your main streaming wrapper matches your matches container properties */
+        .main_container {
+            max-width: 95%;
+            width: 600px; /* Adjust if your server main design wrapper uses alternative sizing */
+            margin: 0 auto;
+            box-sizing: border-box;
+        }
+        
         /* CRITICAL SPEED OPTIMIZATION FOR FCP */
         .news-container, .main_container, .live-chat-box {
             content-visibility: auto;
             contain-intrinsic-size: 0 500px;
         }
-
-        .news-container {
+.news-container {
             max-width: 95%;
             width: 1000px;
             margin: 0 auto 30px auto;
