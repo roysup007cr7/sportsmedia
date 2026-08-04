@@ -174,6 +174,40 @@
             100% { opacity: 0.6; }
         }
 
+        .sport-categories {
+    display: flex;
+    gap: 10px;
+    overflow-x: auto;
+    padding: 10px 0 20px 0;
+    margin-bottom: 10px;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none; /* Hides scrollbar on Firefox */
+}
+
+.sport-categories::-webkit-scrollbar {
+    display: none; /* Hides scrollbar on Chrome/Safari */
+}
+
+.sport-chip {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: rgba(255, 255, 255, 0.7);
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: 600;
+    white-space: nowrap;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.sport-chip.active, .sport-chip:hover {
+    background: #00ffcc;
+    color: #0d0d0d;
+    border-color: #00ffcc;
+    box-shadow: 0 0 12px rgba(0, 255, 204, 0.3);
+}
+
         /* Mobile Optimization responsive patch */
         @media (max-width: 600px) {
             .nav-container {
@@ -245,6 +279,22 @@
 
         <a href="index.html" class="back-home">← Back to Main Dashboard</a>
     </div>
+
+    <!-- Multi-Sport Category Selector Bar -->
+<div class="sport-categories">
+    <button class="sport-chip active" onclick="filterSport('all')">🔥 Highlighted</button>
+    <button class="sport-chip" onclick="filterSport('football')">⚽ Football</button>
+    <button class="sport-chip" onclick="filterSport('cricket')">🏏 Cricket</button>
+    <button class="sport-chip" onclick="filterSport('mma')">🥊 MMA/UFC</button>
+    <button class="sport-chip" onclick="filterSport('olympics')">🥇 Olympics</button>
+</div>
+
+<a href="https://external-stream-link.com" 
+   target="_blank" 
+   rel="noopener noreferrer" 
+   class="watch-live-btn">
+   ⚡ Watch Live on Server 1
+</a>
 
     <footer class="site-footer" style="width: 100%;">
         <div class="footer-top-container" id="about-us-section">
