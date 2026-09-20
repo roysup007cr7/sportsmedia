@@ -1,0 +1,38 @@
+# Deploy the backend on Render: New > Blueprint > point at this repo.
+services:
+  - type: web
+    name: sportsmedia-api
+    runtime: docker
+    dockerfilePath: ./backend/Dockerfile
+    dockerContext: ./backend
+    plan: free
+    healthCheckPath: /api/public/settings
+    envVars:
+      - key: JWT_SECRET
+        generateValue: true
+      - key: ADMIN_USER
+        value: supriyo
+      - key: ADMIN_PASS
+        sync: false          # set this yourself in the Render dashboard
+      - key: CORS_ORIGINS
+        value: "https://*.vercel.app"
+      # Render gives you a postgres://... string. Spring needs the JDBC form:
+      #   jdbc:postgresql://HOST:5432/DBNAME
+      # Paste it in the dashboard after the database is created.
+      - key: DB_URL
+        sync: false
+      - key: DB_USER
+        fromDatabase:
+          name: sportsmedia-db
+          property: user
+      - key: DB_PASS
+        fromDatabase:
+          name: sportsmedia-db
+          property: password
+      - key: FOOTBALL_API_ENABLED
+        value: "false"
+
+databases:
+  - name: sportsmedia-db
+    plan: free
+    databaseName: sportsmedia
