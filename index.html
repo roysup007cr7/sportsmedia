@@ -765,5 +765,66 @@ function playMatchStream(btn, type, url) {
 }
 </script>
 
+<!-- WELCOME POPUP MODAL -->
+<div id="welcome-modal-overlay" class="modal-overlay">
+    <div class="modal-card">
+        <button id="close-modal-btn" class="modal-close-x">&times;</button>
+        <div class="modal-icon">⚽</div>
+        <h2>Welcome to Sports Media Live!</h2>
+        <p>Never miss an equalizer or live stream update! Join our official channels to get instant match links directly on your phone.</p>
+        
+        <div class="modal-actions">
+            <!-- WHATSAPP BUTTON -->
+            <a href="https://whatsapp.com/channel/0029VbDbRJg9MF94wETZ7u0l" target="_blank" class="modal-btn whatsapp-btn">
+                💬 Join WhatsApp Channel
+            </a>
+
+            <!-- TELEGRAM BUTTON -->
+            <a href="https://t.me/sportsmedialive1" target="_blank" class="modal-btn telegram-btn">
+                ✈️ Join Telegram Channel
+            </a>
+
+            <!-- DISMISS BUTTON -->
+            <button id="dismiss-modal-btn" class="modal-btn continue-btn">
+                Continue to Site
+            </button>
+        </div>
+    </div>
+</div>
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+    const modalOverlay = document.getElementById("welcome-modal-overlay");
+    const closeX = document.getElementById("close-modal-btn");
+    const dismissBtn = document.getElementById("dismiss-modal-btn");
+
+    // Check if user already dismissed popup recently
+    const isDismissed = localStorage.getItem("welcomeModalDismissed");
+
+    if (!isDismissed) {
+        // Delay popup by 1 second for smooth user experience
+        setTimeout(() => {
+            modalOverlay.classList.add("active");
+        }, 1000);
+    }
+
+    function closeModal() {
+        modalOverlay.classList.remove("active");
+        // Save flag in local storage so it doesn't open immediately on refresh
+        localStorage.setItem("welcomeModalDismissed", "true");
+    }
+
+    if (closeX) closeX.addEventListener("click", closeModal);
+    if (dismissBtn) dismissBtn.addEventListener("click", closeModal);
+
+    // Close when clicking outside the popup box
+    modalOverlay.addEventListener("click", function (e) {
+        if (e.target === modalOverlay) {
+            closeModal();
+        }
+    });
+});
+</script>
+
 </body>
 </html>
